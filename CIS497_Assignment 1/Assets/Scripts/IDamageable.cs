@@ -13,4 +13,6 @@ public interface IDamageable
     /// </summary>
     /// <param name="amnt">The amount of damage to take.</param>
     void takeDamage(float amnt);
+
+    float health { get; set; }
 }

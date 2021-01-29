@@ -11,7 +11,7 @@ using System.Collections;
 public class Zombie : Entity, IDamageable, IMoveable, ICanAttack
 {
     private float movementSpeed;
-    private float health;
+    public float health { get; set; }
 
     private GameObject player;
     private bool tracking;
