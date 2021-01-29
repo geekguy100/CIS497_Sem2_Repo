@@ -2,7 +2,7 @@
 // File Name :         IMoveable.cs
 // Author :            Kyle Grenier
 // Creation Date :     1/28/2020
-//
+// CIS497 Assignment 1
 // Brief Description : Interface for GameObjects that have the ability to move around.
 *****************************************************************************/
 using UnityEngine;

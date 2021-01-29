@@ -2,7 +2,7 @@
 // File Name :         ICanAttack.cs
 // Author :            Kyle Grenier
 // Creation Date :     1/28/21
-//
+// CIS497 Assignment 1
 // Brief Description : Interface for GameObjects that can attack.
 *****************************************************************************/
 public interface ICanAttack

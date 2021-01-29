@@ -2,7 +2,7 @@
 // File Name :         Zombie.cs
 // Author :            Kyle Grenier
 // Creation Date :     1/28/21
-//
+// CIS497 Assignment 1
 // Brief Description : Zombie enemy. Moves towards and damages player.
 *****************************************************************************/
 using UnityEngine;

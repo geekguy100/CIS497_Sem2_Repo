@@ -2,7 +2,7 @@
 // File Name :         Player.cs
 // Author :            Kyle Grenier
 // Creation Date :     1/28/2020
-//
+// CIS497 Assignment 1
 // Brief Description : Player functionality
 *****************************************************************************/
 using UnityEngine;
