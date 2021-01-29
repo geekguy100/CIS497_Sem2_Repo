@@ -9,16 +9,22 @@ using UnityEngine;
 
 public abstract class Entity : MonoBehaviour
 {
-    private string entityName;
+    protected string entityName;
 
     public void setName(string name)
     {
         entityName = name;
     }
+
     public string getName()
     {
         return entityName;
     }
-    public abstract void die();
+
+    public void die()
+    {
+        Debug.Log(entityName + " has died.");
+        Destroy(gameObject);
+    }
 
 }

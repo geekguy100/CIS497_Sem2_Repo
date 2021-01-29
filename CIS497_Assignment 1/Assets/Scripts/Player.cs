@@ -6,32 +6,66 @@
 // Brief Description : Player functionality
 *****************************************************************************/
 using UnityEngine;
+using System.Collections;
 
 public class Player : Entity, IDamageable, IMoveable, ICanAttack
 {
-    public bool attack(IDamageable target, float damageDealt)
+    private float movementSpeed;
+    private float health;
+
+    private IDamageable enemy;
+
+    private void Awake()
     {
-        throw new System.NotImplementedException();
+        setName("Player");
+        movementSpeed = 7f;
+        health = 100f;
+
+        enemy = GameObject.FindGameObjectWithTag("Zombie").GetComponent<IDamageable>();
     }
 
-    public override void die()
+    private void Update()
     {
-        Debug.Log("Player died!");
-        Destroy(gameObject);
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            Physics.Raycast(ray, out hit);
+            Vector3 pos = hit.point;
+            pos.y = transform.position.y;
+
+            StopAllCoroutines();
+            StartCoroutine(moveTowards(pos));
+
+            //If you click on a damageable, attack it.
+            if (hit.transform != null && hit.transform.GetComponent<IDamageable>() != null && Vector3.Distance(transform.position, hit.point) < 2f)
+            {
+                attack(hit.transform.GetComponent<IDamageable>(), 20f);
+            }
+        }
+       
     }
 
-    public void moveTowards(Entity target)
+    public void attack(IDamageable target, float damageDealt)
     {
-        throw new System.NotImplementedException();
+        Debug.Log(entityName + " attacks for " + damageDealt + " damage.");
+        target.takeDamage(damageDealt);
     }
 
-    public void moveTowards(Vector3 destination)
+    public IEnumerator moveTowards(Vector3 destination)
     {
-        throw new System.NotImplementedException();
+        while (Vector3.Distance(transform.position, destination) > 1f)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, destination, movementSpeed * Time.deltaTime);
+            yield return null;
+        }
     }
 
     public void takeDamage(float amnt)
     {
-        throw new System.NotImplementedException();
+        health -= amnt;
+        if (health < 0)
+            die();
     }
 }
