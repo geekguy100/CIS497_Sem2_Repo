@@ -1,9 +1,9 @@
 /*****************************************************************************
 // File Name :         PlayerWeaponHandler.cs
 // Author :            Kyle Grenier
-// Creation Date :     #CREATIONDATE#
+// Creation Date :     02/04/2021
 //
-// Brief Description : Script that handles changing player input for weapons.
+// Brief Description : Script that handles changing player's weapons based on input.
 *****************************************************************************/
 using UnityEngine;
 

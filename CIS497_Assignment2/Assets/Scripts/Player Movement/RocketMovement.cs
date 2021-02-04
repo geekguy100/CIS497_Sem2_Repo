@@ -1,34 +1,42 @@
+/*****************************************************************************
+// File Name :         RocketMovement.cs
+// Author :            Kyle Grenier
+// Creation Date :     02/04/2021
+//
+// Brief Description : Script that handles the mecanics of moving the rocket game object.
+*****************************************************************************/
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class RocketMovement : MonoBehaviour
 {
     [Header("Movement Variables")]
-    [SerializeField] private float movementSpeed = 5f;
+    [SerializeField] private float movementForce = 1f;
+    [SerializeField] private float maxSpeed;
     [SerializeField] private float horizontalMovementMultiplier = 0.5f;
 
-    [Header("Movement Boundries")]
-    [SerializeField] private float xBoundryOffset = 0f;
-    [SerializeField] private float yBoundryOffset = 0f;
+    private Rigidbody2D rb;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     /// <summary>
-    /// Moves the rocket in the given direction.
+    /// Applies a force to the rocket in the given direction.
     /// </summary>
-    /// <param name="dir">The direction in which to move the rocket.</param>
+    /// <param name="dir">The direction in which to apply the force to the rocket.</param>
     public void Move(Vector3 dir)
     {
         //Taking the horizontal movement multiplier into account.
         dir.x *= horizontalMovementMultiplier;
+        rb.AddForce(dir * movementForce, ForceMode2D.Force);
 
-        Vector3 min = Camera.main.ViewportToWorldPoint(new Vector3(0f, 0 + yBoundryOffset));
-        Vector3 max = Camera.main.ViewportToWorldPoint(new Vector3(1 - xBoundryOffset, 1 - yBoundryOffset));
+        Vector2 vel = rb.velocity;
+        vel = Vector2.ClampMagnitude(vel, maxSpeed);
+        rb.velocity = vel;
 
-        //Making sure the transform's position stays within the designated boundries.
-        Vector3 pos = transform.position;
-        pos += dir * movementSpeed * Time.deltaTime;
-        pos.x = Mathf.Clamp(pos.x, min.x, max.x);
-        pos.y = Mathf.Clamp(pos.y, min.y, max.y);
 
-        //Updating the transform's position.
-        transform.position = pos;
+       // print(rb.velocity);
     }
 }
