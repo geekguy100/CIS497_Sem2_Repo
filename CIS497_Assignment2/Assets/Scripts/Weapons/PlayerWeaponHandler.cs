@@ -22,7 +22,7 @@ public class PlayerWeaponHandler : MonoBehaviour
             weapon.SwapBehaviour(typeof(RedWeapon));
         else if (Input.GetKeyDown(KeyCode.X))
             weapon.SwapBehaviour(typeof(BlueWeapon));
-        else if (Input.GetButtonDown("Jump"))
+        else if (Input.GetButton("Jump"))
             weapon.Fire();
     }
 }

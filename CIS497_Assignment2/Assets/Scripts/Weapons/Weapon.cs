@@ -9,7 +9,8 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] private WeaponBehaviour weaponBehaviour;
+    private WeaponBehaviour weaponBehaviour;
+    [SerializeField] private float laserDistance = 100f;
 
     private void Awake()
     {
@@ -21,7 +22,7 @@ public class Weapon : MonoBehaviour
     }
 
     /// <summary>
-    /// Swaps the weapons behaviour to the given type.
+    /// Swaps the weapons behaviour to the given type. Must be of type WeaponBehaviour.
     /// </summary>
     /// <param name="w">The type of WeaponBehaviour to swap to. Must be of type WeaponBehaviour.</param>
     public void SwapBehaviour(System.Type w)
@@ -36,6 +37,7 @@ public class Weapon : MonoBehaviour
         //Destroy the pre-existing WeaponBehaviour (BlueWeapon, RedWeapon, etc.) and add the new one that was passed in.
         Destroy(GetComponent<WeaponBehaviour>());
         weaponBehaviour = gameObject.AddComponent(w) as WeaponBehaviour;
+        weaponBehaviour.SetLaserDistance(laserDistance);
     }
 
     public void Fire()

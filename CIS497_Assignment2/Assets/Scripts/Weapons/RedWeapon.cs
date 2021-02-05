@@ -9,19 +9,9 @@ using UnityEngine;
 
 public class RedWeapon : WeaponBehaviour
 {
-    /// <summary>
-    /// Changes the weapon to the red weapon.
-    /// </summary>
-    protected override void ChangeColor()
+    protected override void Awake()
     {
-        GetComponentInChildren<SpriteRenderer>().color = Color.red;
-    }
-
-    /// <summary>
-    /// Shoots the red weapon.
-    /// </summary>
-    public override void Fire()
-    {
-        Debug.Log("Firing RED weapon!");
+        base.Awake();
+        ChangeColor(Color.red);
     }
 }

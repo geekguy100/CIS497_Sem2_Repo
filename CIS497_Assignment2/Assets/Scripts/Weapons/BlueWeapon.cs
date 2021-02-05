@@ -9,19 +9,9 @@ using UnityEngine;
 
 public class BlueWeapon : WeaponBehaviour
 {
-    /// <summary>
-    /// Changes the weapon to the blue weapon.
-    /// </summary>
-    protected override void ChangeColor()
+    protected override void Awake()
     {
-        GetComponentInChildren<SpriteRenderer>().color = Color.blue;
-    }
-
-    /// <summary>
-    /// Shoots the blue laser.
-    /// </summary>
-    public override void Fire()
-    {
-        Debug.Log("Firing BLUE weapon!");
+        base.Awake();
+        ChangeColor(Color.blue);
     }
 }
