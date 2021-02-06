@@ -14,12 +14,15 @@ public class SetupBoundaries : MonoBehaviour
     [SerializeField] private Transform rightBoundary;
     [SerializeField] private Transform bottomBoundary;
     [SerializeField] private Transform leftBoundary;
+    [SerializeField] private Transform laserBoundary; //The boundary that prevents the laser from going off screen, potentially destroying 
+                                                      //boxes that aren't even on screen yet.
 
     [Header("Boundary Offsets")]
     [SerializeField] private Vector2 topOffset;
     [SerializeField] private Vector2 rightOffset;
     [SerializeField] private Vector2 bottomOffset;
     [SerializeField] private Vector2 leftOffset;
+    [SerializeField] private Vector2 laserOffset;
 
 
     /// <summary>
@@ -34,11 +37,13 @@ public class SetupBoundaries : MonoBehaviour
         Vector3 rightPos = new Vector3(maxPos.x + rightOffset.x, maxPos.y + rightOffset.y);
         Vector3 bottomPos = new Vector3(minPos.x + bottomOffset.x, minPos.y + bottomOffset.y);
         Vector3 leftPos = new Vector3(minPos.x + leftOffset.x, minPos.y + leftOffset.y);
+        Vector3 laserPos = new Vector3(maxPos.x + laserOffset.x, maxPos.y + rightOffset.y);
 
         topBoundary.position = topPos;
         rightBoundary.position = rightPos;
         bottomBoundary.position = bottomPos;
         leftBoundary.position = leftPos;
+        laserBoundary.position = laserPos;
     }
 
 }

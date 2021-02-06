@@ -8,7 +8,7 @@
 using UnityEngine;
 using TMPro;
 
-public abstract class DestroyableBlock : MonoBehaviour
+public abstract class DestroyableBlock : Obstacle
 {
     private float hitPoints;
 
@@ -26,8 +26,9 @@ public abstract class DestroyableBlock : MonoBehaviour
         hpText = GetComponentInChildren<TextMeshProUGUI>();
     }
 
-    protected virtual void Start()
+    protected override void Start()
     {
+        base.Start();
         hitPoints = Random.Range(20, 141);
         UpdateHPText();
     }
