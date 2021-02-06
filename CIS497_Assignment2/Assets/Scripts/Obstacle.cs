@@ -31,7 +31,7 @@ public abstract class Obstacle : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("Player"))
-        {
+        { 
             Health playerHealth = col.gameObject.GetComponent<Health>();
             playerHealth.TakeInstantDamage(damage);
         }
