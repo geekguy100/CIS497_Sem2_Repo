@@ -1,22 +1,17 @@
 /*****************************************************************************
-// File Name :         BlueWeapon.cs
+// File Name :         BlueBlock.cs
 // Author :            Kyle Grenier
-// Creation Date :     02/03/2021
+// Creation Date :     02.05.2021
 //
-// Brief Description : Defines behaviour for the blue weapon.
+// Brief Description : The blue destroyable block's behaviour.
 *****************************************************************************/
 using UnityEngine;
 
-public class BlueWeapon : WeaponBehaviour
+public class BlueBlock : DestroyableBlock
 {
     protected override void Awake()
     {
         base.Awake();
         ChangeColor(Color.blue);
-    }
-
-    public override void Fire(System.Type b)
-    {
-        base.Fire(typeof(BlueBlock));
     }
 }

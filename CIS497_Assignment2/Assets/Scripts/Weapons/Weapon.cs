@@ -40,6 +40,9 @@ public class Weapon : MonoBehaviour
         weaponBehaviour.SetLaserDistance(laserDistance);
     }
 
+    /// <summary>
+    /// Fires the current WeaponBehaviour's laser.
+    /// </summary>
     public void Fire()
     {
         weaponBehaviour.Fire();
