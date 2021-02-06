@@ -49,12 +49,12 @@ public abstract class WeaponBehaviour : MonoBehaviour
 
         lineRenderer.SetPosition(1, laserPoint.position);
 
-        //Log warning if an invalid type is passed through.
-        if (b.BaseType != typeof(DestroyableBlock))
-        {
-            Debug.LogWarning("Weapon is trying to break a non-DestroyableBlock!");
-            return;
-        }
+        ////Log warning if an invalid type is passed through.
+        //if (b.BaseType != typeof(DestroyableBlock))
+        //{
+        //    Debug.LogWarning("Weapon is trying to break a non-DestroyableBlock!");
+        //    return;
+        //}
 
         //If we didn't hit anything, return.
         if (!hit)
@@ -63,7 +63,7 @@ public abstract class WeaponBehaviour : MonoBehaviour
         //If we hit something, check to see if it is the DestroyableBlock we are trying to destroy.
         DestroyableBlock block = hit.transform.GetComponent(b) as DestroyableBlock;
         if (block != null)
-            block.TakeDamage(damage);
+            block.BlockHealth.TakeDamage(damage);
     }
 
     /// <summary>

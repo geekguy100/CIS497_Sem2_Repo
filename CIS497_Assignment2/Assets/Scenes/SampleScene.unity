@@ -1024,6 +1024,8 @@ GameObject:
   - component: {fileID: 2115831213}
   - component: {fileID: 2115831212}
   - component: {fileID: 2115831215}
+  - component: {fileID: 2115831218}
+  - component: {fileID: 2115831214}
   - component: {fileID: 2115831216}
   - component: {fileID: 2115831217}
   m_Layer: 0
@@ -1075,7 +1077,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementForce: 35
   maxSpeed: 5
-  horizontalMovementMultiplier: 0.5
+  horizontalMovementMultiplier: 1
+--- !u!114 &2115831214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2115831210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b376a39c97ed5e8489d0e60e06c3b28a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
 --- !u!114 &2115831215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1125,3 +1140,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &2115831218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2115831210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7d1799b3c82f3a4db68475ae48dd530, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

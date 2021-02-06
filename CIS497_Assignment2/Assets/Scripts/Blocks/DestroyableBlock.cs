@@ -6,16 +6,22 @@
 // Brief Description : Base class for the game's destroyable blocks.
 *****************************************************************************/
 using UnityEngine;
-using TMPro;
 
+[RequireComponent(typeof(Health))]
+[RequireComponent(typeof(SpriteRenderer))]
 public abstract class DestroyableBlock : Obstacle
 {
-    private float hitPoints;
+    [Header("DestroyableBlock fields")]
+    [SerializeField] private float minHP = 20;
+    [SerializeField] private float maxHP = 141;
+
+    [Tooltip("Multiplier to adjust how much faster health should decrease when damage is inflicted.")]
+    [SerializeField] private float decreaseMultiplier = 5f;
+
+    private Health health;
+    public Health BlockHealth { get { return health; } }
 
     private SpriteRenderer spriteRenderer;
-
-    private TextMeshProUGUI hpText;
-    private float hpDecreaseMultiplier = 5f; //Increases the speed of HP reduction upon taking damage.
 
 
 
@@ -23,36 +29,16 @@ public abstract class DestroyableBlock : Obstacle
     protected virtual void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        hpText = GetComponentInChildren<TextMeshProUGUI>();
+        health = GetComponent<Health>();
     }
 
     protected override void Start()
     {
         base.Start();
-        hitPoints = Random.Range(20, 141);
-        UpdateHPText();
+        health.Setup((int)Random.Range(minHP, maxHP), decreaseMultiplier);
     }
 
-    /// <summary>
-    /// Decrease block's hitpoints by d * Time.deltaTime.
-    /// </summary>
-    /// <param name="d">The damage done to the block.</param>
-    public void TakeDamage(int d)
-    {
-        hitPoints -= d * Time.deltaTime * hpDecreaseMultiplier;
-        UpdateHPText();
 
-        if (hitPoints < 0)
-            Destroy(gameObject);
-    }
-
-    /// <summary>
-    /// Sets the block's HP text to its current hp.
-    /// </summary>
-    private void UpdateHPText()
-    {
-        hpText.text = Mathf.FloorToInt(hitPoints).ToString();
-    }
 
     /// <summary>
     /// Changes the block's color.

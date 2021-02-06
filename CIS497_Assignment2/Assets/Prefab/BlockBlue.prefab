@@ -221,6 +221,7 @@ GameObject:
   - component: {fileID: 7662846927667469623}
   - component: {fileID: 7662846927667469617}
   - component: {fileID: 4273174665919105636}
+  - component: {fileID: 4975273403457943432}
   m_Layer: 0
   m_Name: BlockBlue
   m_TagString: Untagged
@@ -332,6 +333,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2de8439b4208a0344b63bbeea9584e85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 5
+  destroyTime: 15
+  damage: 1
+  minHP: 20
+  maxHP: 141
+  decreaseMultiplier: 5
+--- !u!114 &4975273403457943432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7662846927667469620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7d1799b3c82f3a4db68475ae48dd530, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7662846927693296827
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,6 +363,7 @@ GameObject:
   - component: {fileID: 7662846927693296823}
   - component: {fileID: 7662846927693296820}
   - component: {fileID: 7662846927693296821}
+  - component: {fileID: 6670065096659557646}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -433,3 +453,17 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &6670065096659557646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7662846927693296827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd0f1b92873dfef4daba141d3597d280, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 4975273403457943432}
+  healthText: {fileID: 7662846926344938414}
