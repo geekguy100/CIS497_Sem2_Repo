@@ -23,13 +23,21 @@ public abstract class DestroyableBlock : Obstacle
 
     private SpriteRenderer spriteRenderer;
 
-
+    private ScoreManager scoreManager;
 
 
     protected virtual void Awake()
     {
+        scoreManager = FindObjectOfType<ScoreManager>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         health = GetComponent<Health>();
+
+        health.OnDamageTaken += scoreManager.AddScore;
+    }
+
+    private void OnDisable()
+    {
+        health.OnDamageTaken -= scoreManager.AddScore;
     }
 
     protected override void Start()

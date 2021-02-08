@@ -67,6 +67,14 @@ public abstract class WeaponBehaviour : MonoBehaviour
     }
 
     /// <summary>
+    /// Disable's the line renderer, hiding the laser beam.
+    /// </summary>
+    public void PowerOff()
+    {
+        lineRenderer.enabled = false;
+    }
+
+    /// <summary>
     /// Changes the color of the rocket ship and laser.
     /// </summary>
     /// <param name="color">The color to change to.</param>

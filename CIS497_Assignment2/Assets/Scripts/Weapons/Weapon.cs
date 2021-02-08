@@ -47,4 +47,9 @@ public class Weapon : MonoBehaviour
     {
         weaponBehaviour.Fire();
     }
+
+    public void PowerOff()
+    {
+        weaponBehaviour.PowerOff();
+    }
 }

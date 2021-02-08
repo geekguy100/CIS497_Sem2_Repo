@@ -3,7 +3,7 @@
 // Author :            Kyle Grenier
 // Creation Date :     #CREATIONDATE#
 //
-// Brief Description : ADD BRIEF DESCRIPTION OF THE FILE HERE
+// Brief Description : Manages setting up the player's health.
 *****************************************************************************/
 using UnityEngine;
 
@@ -16,6 +16,7 @@ public class PlayerHealthManager : MonoBehaviour
     private void Awake()
     {
         playerHealth = GetComponent<Health>();
+        playerHealth.OnDeath += FindObjectOfType<GameManager>().GameOver;
     }
 
     private void Start()

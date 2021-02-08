@@ -9,13 +9,35 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    [Tooltip("Number of seconds between pairs of blocks spawning.")]
+    [SerializeField] private float spawnTime = 5f;
+
+    [Tooltip("Number of seconds until blocks start spawning.")]
+    [SerializeField] private float initialDelay = 5f;
+
+    [Tooltip("Prefab of blocks to spawn. ONLY USING THE FIRST TWO.")]
     [SerializeField] private GameObject[] blockPrefabs = null;
     [SerializeField] private Transform[] spawnPos = null; //Only using the first two.
+
+    private GameManager gm;
+
+    private void Awake()
+    {
+        gm = FindObjectOfType<GameManager>();
+        gm.OnGameOver += CancelSpawning;
+        gm.OnGameWin += CancelSpawning;
+    }
+
+    private void OnDisable()
+    {
+        gm.OnGameOver -= CancelSpawning;
+        gm.OnGameWin -= CancelSpawning;
+    }
 
     private void Start()
     {
         //Spawn a pair of blocks every 5 seconds.
-        InvokeRepeating("Spawn", 0f, 5f);
+        InvokeRepeating("Spawn", initialDelay, spawnTime);
     }
 
     /// <summary>
@@ -25,10 +47,18 @@ public class SpawnManager : MonoBehaviour
     {
         int blockIndex = Random.Range(0, blockPrefabs.Length);
 
-        Instantiate(blockPrefabs[blockIndex], spawnPos[0].position, blockPrefabs[blockIndex].transform.rotation);
+        GameObject spawnOne = Instantiate(blockPrefabs[blockIndex], spawnPos[0].position, blockPrefabs[blockIndex].transform.rotation);
 
         blockIndex = Random.Range(0, blockPrefabs.Length);
 
-        Instantiate(blockPrefabs[blockIndex], spawnPos[1].position, blockPrefabs[blockIndex].transform.rotation);
+        GameObject spawnTwo = Instantiate(blockPrefabs[blockIndex], spawnPos[1].position, blockPrefabs[blockIndex].transform.rotation);
+    }
+
+    /// <summary>
+    /// Stops the blocks from spawning.
+    /// </summary>
+    private void CancelSpawning()
+    {
+        CancelInvoke("Spawn");
     }
 }

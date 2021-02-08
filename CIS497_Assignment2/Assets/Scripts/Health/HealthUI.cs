@@ -3,7 +3,7 @@
 // Author :            Kyle Grenier
 // Creation Date :     #CREATIONDATE#
 //
-// Brief Description : ADD BRIEF DESCRIPTION OF THE FILE HERE
+// Brief Description : Adds UI behaviour to an object's Health component.
 *****************************************************************************/
 using UnityEngine;
 using TMPro;
@@ -30,8 +30,8 @@ public class HealthUI : MonoBehaviour
             health.OnHealthChange -= UpdateText;
     }
 
-    void UpdateText()
+    void UpdateText(float h)
     {
-        healthText.text = Mathf.FloorToInt(health.GetHP()).ToString();
+        healthText.text = Mathf.FloorToInt(h).ToString();
     }
 }

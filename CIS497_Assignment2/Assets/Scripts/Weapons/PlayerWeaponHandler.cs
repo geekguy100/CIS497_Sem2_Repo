@@ -14,15 +14,23 @@ public class PlayerWeaponHandler : MonoBehaviour
     private void Awake()
     {
         weapon = GetComponentInChildren<Weapon>();
+        if (weapon == null)
+            Debug.LogWarning("PlayerWeaponHandler has no weapon!");
     }
 
     private void Update()
     {
+        if (weapon == null)
+            return;
+
         if (Input.GetKeyDown(KeyCode.Z))
             weapon.SwapBehaviour(typeof(RedWeapon));
         else if (Input.GetKeyDown(KeyCode.X))
             weapon.SwapBehaviour(typeof(BlueWeapon));
         else if (Input.GetButton("Jump"))
             weapon.Fire();
+
+        if (Input.GetButtonUp("Jump"))
+            weapon.PowerOff();
     }
 }

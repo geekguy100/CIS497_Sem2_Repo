@@ -337,7 +337,7 @@ MonoBehaviour:
   destroyTime: 15
   damage: 1
   minHP: 20
-  maxHP: 141
+  maxHP: 120
   decreaseMultiplier: 5
 --- !u!114 &4975273403457943432
 MonoBehaviour:

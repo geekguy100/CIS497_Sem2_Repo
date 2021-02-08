@@ -13,8 +13,14 @@ public class Health : MonoBehaviour
     private float hp;
     private float decreaseMultiplier;
 
-    public delegate void HealthChangeHandler();
+    public delegate void HealthChangeHandler(float health);
     public event HealthChangeHandler OnHealthChange;
+
+    public delegate void DamageHandler(float d);
+    public event DamageHandler OnDamageTaken;
+
+    public delegate void DeathHandler();
+    public event DeathHandler OnDeath;
 
     /// <summary>
     /// Sets up the object's Health with hp and a decrease multiplier.
@@ -26,7 +32,7 @@ public class Health : MonoBehaviour
         this.hp = hp;
         this.decreaseMultiplier = decreaseMultiplier;
 
-        OnHealthChange?.Invoke();
+        OnHealthChange?.Invoke(hp);
     }
 
     public float GetHP()
@@ -41,9 +47,10 @@ public class Health : MonoBehaviour
     public void TakeDamage(float d)
     {
         hp -= d * Time.deltaTime * decreaseMultiplier;
-        OnHealthChange?.Invoke();
+        OnHealthChange?.Invoke(hp);
+        OnDamageTaken?.Invoke(d * Time.deltaTime * decreaseMultiplier);
 
-        if (hp <= 0)
+        if (hp <= 1)
             Die();
     }
 
@@ -54,7 +61,8 @@ public class Health : MonoBehaviour
     public void TakeInstantDamage(float d)
     {
         hp -= d;
-        OnHealthChange?.Invoke();
+        OnHealthChange?.Invoke(hp);
+        OnDamageTaken?.Invoke(d);
 
         if (hp <= 0)
             Die();
@@ -65,6 +73,7 @@ public class Health : MonoBehaviour
     /// </summary>
     public void Die()
     {
+        OnDeath?.Invoke();
         Destroy(gameObject);
     }
 }

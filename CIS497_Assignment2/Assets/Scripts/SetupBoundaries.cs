@@ -30,6 +30,17 @@ public class SetupBoundaries : MonoBehaviour
     /// </summary>
     private void Start()
     {
+        WindowManager.instance.ScreenSizeChangeEvent += AdjustBoundries;
+        AdjustBoundries();
+    }
+
+    private void OnDisable()
+    {
+        WindowManager.instance.ScreenSizeChangeEvent -= AdjustBoundries;
+    }
+
+    private void AdjustBoundries(int w=0, int h=0)
+    {
         Vector3 minPos = Camera.main.ViewportToWorldPoint(Vector3.zero);
         Vector3 maxPos = Camera.main.ViewportToWorldPoint(Vector3.one);
 
@@ -39,11 +50,16 @@ public class SetupBoundaries : MonoBehaviour
         Vector3 leftPos = new Vector3(minPos.x + leftOffset.x, minPos.y + leftOffset.y);
         Vector3 laserPos = new Vector3(maxPos.x + laserOffset.x, maxPos.y + rightOffset.y);
 
-        topBoundary.position = topPos;
-        rightBoundary.position = rightPos;
-        bottomBoundary.position = bottomPos;
-        leftBoundary.position = leftPos;
-        laserBoundary.position = laserPos;
+        if (topBoundary != null)
+            topBoundary.position = topPos;
+        if (rightBoundary != null)
+            rightBoundary.position = rightPos;
+        if (bottomBoundary != null)
+            bottomBoundary.position = bottomPos;
+        if (leftBoundary != null)
+            leftBoundary.position = leftPos;
+        if (laserBoundary != null)
+            laserBoundary.position = laserPos;
     }
 
 }
