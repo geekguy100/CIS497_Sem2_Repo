@@ -5,7 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ObserverPatternCollide
+namespace ObserverPatternWithScriptableObjects
 {
     //Attach this class to GameObjects with colliders in the scene
     public class Location : MonoBehaviour
@@ -33,7 +33,7 @@ namespace ObserverPatternCollide
             if (other.tag == "Player" && visited == false)
             {
                 visited = true;
-                PlayerInfo.totalExp += this.expForDiscovering;
+                locationData.totalExp += this.expForDiscovering;
                 locationData.NotifyObservers();
             }
             

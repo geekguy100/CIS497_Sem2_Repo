@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-namespace ObserverPatternCollide
+namespace ObserverPatternWithScriptableObjects
 {
     //Attach this class to a UI text object to display the text
     public class DisplayLocationsVisited : MonoBehaviour, IObserver
@@ -36,8 +36,8 @@ namespace ObserverPatternCollide
                 textToDisplay += "Visited: " + location.visited.ToString() + ".\n";
                 textToDisplay += "Experience for discovering: " + location.expForDiscovering.ToString() + ".\n\n";
             }
-            textToDisplay += "Total Experience: " + PlayerInfo.totalExp.ToString() + ".\n";
-            gameObject.GetComponent<Text>().text = textToDisplay;
+            textToDisplay += "Total Experience: " + locationData.totalExp.ToString() + ".\n";
+            gameObject.GetComponent<Text>().text = this.textToDisplay;
         }
         
     }
