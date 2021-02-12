@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 5187673236862714011}
   - component: {fileID: 5542500375215526844}
   - component: {fileID: 1030579024}
+  - component: {fileID: -2418201981734080556}
   m_Layer: 0
   m_Name: BallGuy
   m_TagString: Ball
@@ -196,6 +197,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &-2418201981734080556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5417810701955535111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52f2685290841a748aa6cf10317b62be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minBoundary: {x: -18, y: -12}
+  maxBoundary: {x: 18, y: 12}
 --- !u!1 &5417810701965144527
 GameObject:
   m_ObjectHideFlags: 0
