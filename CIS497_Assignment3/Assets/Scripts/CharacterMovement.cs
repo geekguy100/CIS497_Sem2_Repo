@@ -7,12 +7,26 @@
 *****************************************************************************/
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class CharacterMovement : MonoBehaviour
 {
-    [SerializeField] private float movementSpeed = 10f;
+    [Tooltip("The force to apply to the rigidbody.")]
+    [SerializeField] private float movementForce = 10f;
 
-    public void Move(Vector3 dir)
+    private Rigidbody2D rb;
+
+    private void Awake()
     {
-        transform.position += dir * movementSpeed * Time.deltaTime;
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    public void Move(Vector2 dir)
+    {
+        Vector2 force = dir * movementForce;
+
+        rb.AddForce(force * Time.fixedDeltaTime);
+
+        //rb.MovePosition(rb.position + dir * movementSpeed * Time.fixedDeltaTime);
+        //transform.position += dir * movementSpeed * Time.deltaTime;
     }
 }

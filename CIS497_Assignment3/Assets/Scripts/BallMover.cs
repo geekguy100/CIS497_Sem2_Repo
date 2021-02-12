@@ -17,7 +17,7 @@ public class BallMover : MonoBehaviour
         movement = GetComponent<CharacterMovement>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         movement.Move(Vector2.right);
     }
