@@ -4,12 +4,13 @@
 // Creation Date :     #CREATIONDATE#
 //
 // Brief Description : Raycast on mouse position and push any rigidbodies in direction of mouse movement.
-                       Activate my holding down left mouse button.
+                       Activate my holding down left mouse button and moving the mouse cursor near a Rigidbody2D tagged "Ball".
 *****************************************************************************/
 using UnityEngine;
 
 public class MousePusher : MonoBehaviour
 {
+    [Tooltip("The force to apply to the rigidbody.")]
     [SerializeField] private float pushForce = 4f;
 
     private void Update()
@@ -39,7 +40,6 @@ public class MousePusher : MonoBehaviour
     private void PushRigidbody2D(Rigidbody2D rb)
     {
         Vector2 mouseVel = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
-        print(mouseVel);
         Vector2 force = mouseVel * pushForce;
         rb.AddForce(force, ForceMode2D.Force);
     }

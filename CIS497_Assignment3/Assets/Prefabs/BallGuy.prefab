@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5417810701847261412}
   - component: {fileID: 5417810701847261411}
   - component: {fileID: 5417810701847261410}
+  - component: {fileID: 5349864540548259809}
   m_Layer: 0
   m_Name: ballguy_face01
   m_TagString: Untagged
@@ -102,6 +103,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5349864540548259809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5417810701847261409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6754c25938f8a1c45aa4abb62dbe33da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5417810701955535111
 GameObject:
   m_ObjectHideFlags: 0
@@ -149,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c79172386fc210a4d88091d6473116cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementForce: 60
+  movementForce: 40
 --- !u!114 &5542500375215526844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,7 +188,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 0.5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}

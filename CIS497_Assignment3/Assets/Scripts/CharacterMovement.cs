@@ -1,9 +1,9 @@
 /*****************************************************************************
 // File Name :         CharacterMovement.cs
 // Author :            Kyle Grenier
-// Creation Date :     #CREATIONDATE#
+// Creation Date :     02/11/2021
 //
-// Brief Description : ADD BRIEF DESCRIPTION OF THE FILE HERE
+// Brief Description : How a character in the game should move.
 *****************************************************************************/
 using UnityEngine;
 
@@ -20,6 +20,10 @@ public class CharacterMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+    /// <summary>
+    /// Moves the rigidbody by adding a force in the given direction.
+    /// </summary>
+    /// <param name="dir">The direction to add a force.</param>
     public void Move(Vector2 dir)
     {
         Vector2 force = dir * movementForce;
@@ -28,5 +32,14 @@ public class CharacterMovement : MonoBehaviour
 
         //rb.MovePosition(rb.position + dir * movementSpeed * Time.fixedDeltaTime);
         //transform.position += dir * movementSpeed * Time.deltaTime;
+    }
+
+    /// <summary>
+    /// Sets the movement force to the given value.
+    /// </summary>
+    /// <param name="force">The movement force.</param>
+    public void SetMovementForce(float force)
+    {
+        movementForce = force;
     }
 }

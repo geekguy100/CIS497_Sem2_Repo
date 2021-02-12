@@ -11,6 +11,6 @@ public class BucketTrigger : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D col)
     {
-        print(col.gameObject.name + " in bucket");
+        Destroy(col.transform.parent.gameObject);
     }
 }

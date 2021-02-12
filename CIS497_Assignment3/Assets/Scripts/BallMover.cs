@@ -11,14 +11,20 @@ using UnityEngine;
 public class BallMover : MonoBehaviour
 {
     private CharacterMovement movement;
+    private Vector2 movementDirection = Vector2.zero;
 
     private void Awake()
     {
         movement = GetComponent<CharacterMovement>();
     }
 
+    private void Start()
+    {
+        movementDirection = (Vector3.zero - transform.position).normalized;
+    }
+
     private void FixedUpdate()
     {
-        movement.Move(Vector2.right);
+        movement.Move(movementDirection);
     }
 }
