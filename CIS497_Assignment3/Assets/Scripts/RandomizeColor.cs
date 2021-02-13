@@ -18,6 +18,9 @@ public class RandomizeColor : MonoBehaviour
 
     private void Start()
     {
-        spriteRenderer.color = Random.ColorHSV(0, 1);
+        float r = Random.Range(0f, 1f);
+        float g = Random.Range(0f, 1f);
+        float b = Random.Range(0f, 1f);
+        spriteRenderer.color = new Color(r, g, b);
     }
 }
