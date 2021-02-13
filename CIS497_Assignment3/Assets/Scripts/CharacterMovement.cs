@@ -42,4 +42,13 @@ public class CharacterMovement : MonoBehaviour
     {
         movementForce = force;
     }
+
+    /// <summary>
+    /// Returns the character's current direction of movement.
+    /// </summary>
+    /// <returns>The character's direction of movement.</returns>
+    public Vector2 GetDirection()
+    {
+        return rb.velocity.normalized;
+    }
 }

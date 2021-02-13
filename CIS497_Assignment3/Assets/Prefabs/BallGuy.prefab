@@ -94,7 +94,7 @@ Animator:
   m_GameObject: {fileID: 5417810701847261409}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 532cb1a8fcc11214888760308ce02d3c, type: 2}
+  m_Controller: {fileID: 22100000, guid: 568219120c3b245489b458aae716a71e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -128,6 +128,7 @@ GameObject:
   - component: {fileID: 5542500375215526844}
   - component: {fileID: 1030579024}
   - component: {fileID: -2418201981734080556}
+  - component: {fileID: 391437028}
   m_Layer: 0
   m_Name: BallGuy
   m_TagString: Ball
@@ -211,6 +212,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minBoundary: {x: -18, y: -12}
   maxBoundary: {x: 18, y: 12}
+--- !u!114 &391437028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5417810701955535111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d9d2e03ffa69d7479f0c7a02f62bbd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim:
+  - {fileID: 5417810701965144512}
+  - {fileID: 5417810701847261410}
 --- !u!1 &5417810701965144527
 GameObject:
   m_ObjectHideFlags: 0

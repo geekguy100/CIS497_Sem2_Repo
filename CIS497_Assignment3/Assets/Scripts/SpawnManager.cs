@@ -1,7 +1,7 @@
 /*****************************************************************************
 // File Name :         SpawnManager.cs
 // Author :            Kyle Grenier
-// Creation Date :     #CREATIONDATE#
+// Creation Date :     02/11/2021
 //
 // Brief Description : Manages spawning in ball guys.
 *****************************************************************************/
