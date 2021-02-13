@@ -13,6 +13,9 @@ public class BallMover : MonoBehaviour
     private CharacterMovement movement;
     private Vector2 movementDirection = Vector2.zero;
 
+    //Can the ball move? Ball can only move when it is not on the ground.
+    private bool canMove = false;
+
     private void Awake()
     {
         movement = GetComponent<CharacterMovement>();
@@ -25,6 +28,17 @@ public class BallMover : MonoBehaviour
 
     private void FixedUpdate()
     {
-        movement.Move(movementDirection);
+        print(canMove);
+        if (canMove)
+            movement.Move(movementDirection);
+    }
+
+    /// <summary>
+    /// Updates the BallMover's ability to move.
+    /// </summary>
+    /// <param name="canMove">True if the ball is able to move.</param>
+    public void UpdateMovement(int canMove)
+    {
+        this.canMove = (canMove <= 0 ? false : true);
     }
 }

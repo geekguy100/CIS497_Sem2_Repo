@@ -23,7 +23,6 @@ public class GameManager : MonoBehaviour
         //TODO: Load "Main" level.
     }
 
-
     private void OnLoadOperationComplete(AsyncOperation ao)
     {
         if(loadOperations.Contains(ao))

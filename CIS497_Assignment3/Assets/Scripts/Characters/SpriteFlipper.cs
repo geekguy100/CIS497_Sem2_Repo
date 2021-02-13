@@ -22,8 +22,11 @@ public class SpriteFlipper : MonoBehaviour
     private void Awake()
     {
         characterMovement = GetComponent<CharacterMovement>();
+    }
 
-        ChangeDirection(Direction.RIGHT);
+    private void Start()
+    {
+        ChangeDirection(Direction.RIGHT); //Default to facing right.
     }
 
     private void Update()

@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c79172386fc210a4d88091d6473116cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementForce: 40
+  movementForce: 1000
 --- !u!114 &5542500375215526844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,7 +190,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0.5
+  m_LinearDrag: 7
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -239,6 +239,7 @@ GameObject:
   - component: {fileID: 5417810701965144513}
   - component: {fileID: 5417810701965144512}
   - component: {fileID: 1036174220}
+  - component: {fileID: 2868255794331399661}
   m_Layer: 0
   m_Name: ballguy_body_01
   m_TagString: Untagged
@@ -346,3 +347,15 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.67}
   serializedVersion: 2
   m_Radius: 0.59
+--- !u!114 &2868255794331399661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5417810701965144527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e993a188dd2f994f80a9ef222f97a3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
