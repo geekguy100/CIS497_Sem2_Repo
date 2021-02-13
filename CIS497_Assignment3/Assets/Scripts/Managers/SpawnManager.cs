@@ -23,7 +23,17 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private float maxWaitTime = 5f;
 
 
-    private void Start()
+    private void Awake()
+    {
+        EventManager.OnGameStart += StartSpawning;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.OnGameStart -= StartSpawning;
+    }
+
+    private void StartSpawning()
     {
         StartCoroutine("Spawn");
     }

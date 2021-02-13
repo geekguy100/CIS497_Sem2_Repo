@@ -13,6 +13,9 @@ public class BallMover : MonoBehaviour
     private CharacterMovement movement;
     private Vector2 movementDirection = Vector2.zero;
 
+    [Tooltip("The CharacterSoundController to associate sounds with animation.")]
+    [SerializeField] private CharacterSoundController audioSource;
+
     //Can the ball move? Ball can only move when it is not on the ground.
     private bool canMove = false;
 
@@ -28,7 +31,6 @@ public class BallMover : MonoBehaviour
 
     private void FixedUpdate()
     {
-        print(canMove);
         if (canMove)
             movement.Move(movementDirection);
     }
@@ -39,6 +41,14 @@ public class BallMover : MonoBehaviour
     /// <param name="canMove">True if the ball is able to move.</param>
     public void UpdateMovement(int canMove)
     {
+        //Play land sound if cannot move (grounded) and jump sound if can move.
+        if (audioSource != null)
+        {
+            //If we can't jump and want to, play the jump sound.
+            if (!this.canMove && canMove > 0)
+                audioSource.Play(0);
+        }
+
         this.canMove = (canMove <= 0 ? false : true);
     }
 }

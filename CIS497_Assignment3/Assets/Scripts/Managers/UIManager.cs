@@ -11,7 +11,9 @@ using TMPro;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI titleText;
+    [SerializeField] private TextMeshProUGUI startText;
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private Animator titleAnimator;
 
     [Tooltip("The Animator used to control the score sliding animation.")]
     [SerializeField] private Animator scoreAnim;
@@ -19,11 +21,13 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         EventManager.OnScoreChange += UpdateScoreText;
+        EventManager.OnGameStart += FadeOutTitle;
     }
 
     private void OnDisable()
     {
         EventManager.OnScoreChange -= UpdateScoreText;
+        EventManager.OnGameStart -= FadeOutTitle;
     }
 
     public void UpdateScoreText(int score)
@@ -35,5 +39,13 @@ public class UIManager : MonoBehaviour
         {
             scoreAnim.SetTrigger("Score Changed");
         }
+    }
+
+    /// <summary>
+    /// Fades out the title text and "press enter to start" text.
+    /// </summary>
+    public void FadeOutTitle()
+    {
+        titleAnimator.SetTrigger("Fade Out");
     }
 }

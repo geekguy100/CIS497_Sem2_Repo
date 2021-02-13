@@ -9,9 +9,15 @@ using System;
 
 public static class EventManager
 {
+    public static event Action OnGameStart;
     public static event Action OnGameWin;
     public static event Action OnBucketTrigger;
     public static event Action<int> OnScoreChange; //Takes the score as an parameter.
+
+    public static void GameStart()
+    {
+        OnGameStart?.Invoke();
+    }
 
     public static void GameWin()
     {
