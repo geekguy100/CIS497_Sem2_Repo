@@ -7,7 +7,7 @@
 *****************************************************************************/
 using UnityEngine;
 
-public class DestroyOutOfBounds : MonoBehaviour
+public abstract class DestroyOutOfBounds : MonoBehaviour
 {
     [SerializeField] private Vector2 minBoundary;
     [SerializeField] private Vector2 maxBoundary;
@@ -17,7 +17,10 @@ public class DestroyOutOfBounds : MonoBehaviour
         Vector2 pos = transform.position;
 
         if (OutsideMin(pos) || OutsideMax(pos))
+        {
+            PerformAction();
             Destroy(gameObject);
+        }
     }
 
     /// <summary>
@@ -37,4 +40,9 @@ public class DestroyOutOfBounds : MonoBehaviour
     {
         return (pos.x > maxBoundary.x || pos.y > maxBoundary.y);
     }
+
+    /// <summary>
+    /// Other actions to be performed outside of destroying the game object out of bounds.
+    /// </summary>
+    protected abstract void PerformAction();
 }

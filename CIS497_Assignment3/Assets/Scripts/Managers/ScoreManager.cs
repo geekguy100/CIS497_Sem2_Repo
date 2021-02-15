@@ -14,6 +14,7 @@ public class ScoreManager : MonoBehaviour
 
     [Tooltip("The score required to win the game.")]
     [SerializeField] private int winningScore = 15;
+    public int WinningScore { get { return winningScore; } }
 
     private void Awake()
     {
@@ -29,7 +30,7 @@ public class ScoreManager : MonoBehaviour
     /// <summary>
     /// Adds a point to the current score. If winning score is achieved, GameWin is called on EventManager.
     /// </summary>
-    public void AddScore()
+    private void AddScore()
     {
         ++score;
         EventManager.ScoreChange(score);

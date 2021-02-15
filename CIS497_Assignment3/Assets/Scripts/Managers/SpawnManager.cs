@@ -38,6 +38,9 @@ public class SpawnManager : MonoBehaviour
         StartCoroutine("Spawn");
     }
 
+    /// <summary>
+    /// Spawns in a puffle and waits a random amount of time before spawning another.
+    /// </summary>
     private IEnumerator Spawn()
     {
         while (true)

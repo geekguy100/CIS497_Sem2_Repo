@@ -7,30 +7,74 @@
 *****************************************************************************/
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI titleText;
-    [SerializeField] private TextMeshProUGUI startText;
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI livesText;
+    [SerializeField] private TextMeshProUGUI tutorialText;
+
+    [Tooltip("The Animator used to control the title screen animations.")]
     [SerializeField] private Animator titleAnimator;
 
     [Tooltip("The Animator used to control the score sliding animation.")]
     [SerializeField] private Animator scoreAnim;
 
+    [Tooltip("The Animator used to control the lives sliding animation.")]
+    [SerializeField] private Animator livesAnim;
+
+    [Tooltip("The Animator used to control the UI animations after the game ends.")]
+    [SerializeField] private Animator gameEndAnim;
+
     private void Awake()
     {
         EventManager.OnScoreChange += UpdateScoreText;
-        EventManager.OnGameStart += FadeOutTitle;
+        EventManager.OnLoseLife += UpdateLivesText;
+        EventManager.OnTutorialStart += FadeOutTitle;
+        EventManager.OnGameStart += FadeOutTutorial;
+        EventManager.OnGameLost += OnGameLost;
+        EventManager.OnGameWin += OnGameWin;
     }
 
     private void OnDisable()
     {
         EventManager.OnScoreChange -= UpdateScoreText;
-        EventManager.OnGameStart -= FadeOutTitle;
+        EventManager.OnLoseLife -= UpdateLivesText;
+        EventManager.OnTutorialStart -= FadeOutTitle;
+        EventManager.OnGameStart -= FadeOutTutorial;
+        EventManager.OnGameLost -= OnGameLost;
+        EventManager.OnGameWin -= OnGameWin;
     }
 
-    public void UpdateScoreText(int score)
+    private void Start()
+    {
+        Setup();
+    }
+
+    private void Setup()
+    {
+        ScoreManager scoreManager = FindObjectOfType<ScoreManager>();
+        int score = scoreManager.WinningScore;
+
+        PlayerLives playerLives = FindObjectOfType<PlayerLives>();
+        int lives = playerLives.Lives;
+
+        livesText.text = lives.ToString();
+
+        tutorialText.text =
+            "GOAL:  Corral the Puffles into the bucket.\n\n" +
+            "Hold <LEFT MOUSE> and drag to push the Puffles around the play area.\n\n" +
+            "Be warned, if <" + lives + "> escape, you'll lose!\n\n" +
+            "Your goal is to get <" + score + "> into the bucket.\n\n" +
+            "Press <ENTER> to begin...";
+    }
+
+    /// <summary>
+    /// Updates the score text and plays the animation to display the score.
+    /// </summary>
+    /// <param name="score">The score the player has.</param>
+    private void UpdateScoreText(int score)
     {
         scoreText.text = score.ToString();
 
@@ -42,10 +86,43 @@ public class UIManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Updates the lives text and plays the animation to display lives.
+    /// </summary>
+    /// <param name="lives">Number of lives the player has.</param>
+    private void UpdateLivesText(int lives)
+    {
+        livesText.text = lives.ToString();
+
+        //Only run if the animation is in an idle state.
+        if (livesAnim != null && livesAnim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "lives_idle")
+        {
+            livesAnim.SetTrigger("Lives Changed");
+        }
+    }
+
+    private void OnGameLost()
+    {
+        gameEndAnim.SetTrigger("Game Lost");
+    }
+
+    private void OnGameWin()
+    {
+        gameEndAnim.SetTrigger("Game Won");
+    }
+
+    /// <summary>
     /// Fades out the title text and "press enter to start" text.
     /// </summary>
-    public void FadeOutTitle()
+    private void FadeOutTitle()
     {
-        titleAnimator.SetTrigger("Fade Out");
+        titleAnimator.SetTrigger("Fade Out Title");
+    }
+
+    /// <summary>
+    /// Fades out the tutorial text.
+    /// </summary>
+    private void FadeOutTutorial()
+    {
+        titleAnimator.SetTrigger("Fade Out Tutorial");
     }
 }
