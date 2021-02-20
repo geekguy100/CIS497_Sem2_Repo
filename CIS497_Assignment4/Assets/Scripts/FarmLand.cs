@@ -16,6 +16,11 @@ public abstract class FarmLand
 
     private int cropCount;
 
+    /// <summary>
+    /// FarmLand constructor requiring a min bounadry and max boundary.
+    /// </summary>
+    /// <param name="minBoundary">The minimum boundary of the farm.</param>
+    /// <param name="maxBoundary">The maximum boundary of the farm.</param>
     public FarmLand(Vector3 minBoundary, Vector3 maxBoundary)
     {
         this.minBoundary = minBoundary;
@@ -24,11 +29,19 @@ public abstract class FarmLand
         cropCount = 0;
     }
 
+    /// <summary>
+    /// How many crops are on the farm land.
+    /// </summary>
+    /// <returns>The number of crops on the farm land.</returns>
     public virtual int GetCropCount()
     {
         return cropCount;
     }
 
+    /// <summary>
+    /// Gets the min boundaries and max boundaries of the farm enclosure in that order.
+    /// </summary>
+    /// <returns>The min and max boundaries of the farm enclosure.</returns>
     public Vector3[] GetBoundaries()
     {
         Vector3[] array = new Vector3[] { minBoundary, maxBoundary};
