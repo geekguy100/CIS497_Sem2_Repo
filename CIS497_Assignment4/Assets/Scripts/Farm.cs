@@ -24,7 +24,8 @@ public class Farm : MonoBehaviour
 
     private void Start()
     {
-        farmLand = new FarmLand(minBoundaries, maxBoundaries);
+        farmLand = new WetFarmLand(minBoundaries, maxBoundaries);
+        //farmLand = new DryFarmLand(minBoundaries, maxBoundaries);
     }
 
     /// <summary>
@@ -70,5 +71,6 @@ public class Farm : MonoBehaviour
         cropList.AddToList<T>();
 
         Debug.Log(farmLand.GetDescription());
+        Debug.Log("Crop Count: " + farmLand.GetCropCount());
     }
 }

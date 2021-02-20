@@ -13,6 +13,7 @@ public abstract class FarmLandDecorator : FarmLand
     {
     }
 
-    public override abstract string GetDescription();
+    public abstract override string GetDescription();
     public abstract override void AddCrop(GameObject crop);
+    public abstract override int GetCropCount();
 }

@@ -7,15 +7,26 @@
 *****************************************************************************/
 using UnityEngine;
 
-public class FarmLand
+public abstract class FarmLand
 {
     private Vector3 minBoundary;
     private Vector3 maxBoundary;
+
+    protected string description;
+
+    private int cropCount;
 
     public FarmLand(Vector3 minBoundary, Vector3 maxBoundary)
     {
         this.minBoundary = minBoundary;
         this.maxBoundary = maxBoundary;
+        description = string.Empty;
+        cropCount = 0;
+    }
+
+    public virtual int GetCropCount()
+    {
+        return cropCount;
     }
 
     public Vector3[] GetBoundaries()
@@ -30,7 +41,7 @@ public class FarmLand
     /// <returns>The farm tile's description.</returns>
     public virtual string GetDescription()
     {
-        return "Farm tile with ";
+        return description + " with ";
     }
 
     /// <summary>

@@ -1,7 +1,7 @@
 /*****************************************************************************
 // File Name :         PumpkinTile.cs
 // Author :            Kyle Grenier
-// Creation Date :     #CREATIONDATE#
+// Creation Date :     02/19/2021
 //
 // Brief Description : Farmland that contains a pumpkin.
 *****************************************************************************/
@@ -35,5 +35,10 @@ public class Pumpkin : FarmLandDecorator
     public override void AddCrop(GameObject crop)
     {
         tile.AddCrop(crop);
+    }
+
+    public override int GetCropCount()
+    {
+        return tile.GetCropCount() + 1;
     }
 }

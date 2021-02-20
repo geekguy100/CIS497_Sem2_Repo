@@ -1,4 +1,4 @@
-﻿/* Example Code for Game Programming Design Patterns
+/* Example Code for Game Programming Design Patterns
  * Author: Owen Schaffer
  */
 using System.Collections;

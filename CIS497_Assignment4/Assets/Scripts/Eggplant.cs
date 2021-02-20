@@ -36,4 +36,9 @@ public class Eggplant : FarmLandDecorator
     {
         tile.AddCrop(crop);
     }
+
+    public override int GetCropCount()
+    {
+        return tile.GetCropCount() + 1;
+    }
 }
