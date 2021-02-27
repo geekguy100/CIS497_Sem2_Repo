@@ -5,7 +5,6 @@
 //
 // Brief Description : Behvaiour for the Red Coin.
 *****************************************************************************/
-using UnityEngine;
 
 public sealed class RedCoin : Coin
 {

@@ -5,7 +5,6 @@
 //
 // Brief Description : Behvaiour for the Yellow Coin.
 *****************************************************************************/
-using UnityEngine;
 
 public sealed class YellowCoin : Coin
 {

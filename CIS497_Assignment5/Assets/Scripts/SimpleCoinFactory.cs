@@ -9,6 +9,8 @@ using UnityEngine;
 
 public class SimpleCoinFactory
 {
+    // NOTE: Could also spawn in a generic type of coin, and add the red coin or yellow coin component at runtime depending
+    //       on the type that was passed through.
     public enum CoinType { YELLOW, RED }
 
     /// <summary>
