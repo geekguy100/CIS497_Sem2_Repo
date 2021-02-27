@@ -7,7 +7,7 @@
 *****************************************************************************/
 using UnityEngine;
 
-public static class SimpleCoinFactory
+public class SimpleCoinFactory
 {
     public enum CoinType { YELLOW, RED }
 
@@ -16,7 +16,7 @@ public static class SimpleCoinFactory
     /// </summary>
     /// <param name="coinType">The type of coin to get.</param>
     /// <returns>The coin prefab.</returns>
-    public static GameObject CreateCoin(CoinType coinType)
+    public GameObject CreateCoin(CoinType coinType)
     {
         switch (coinType)
         {
@@ -34,7 +34,7 @@ public static class SimpleCoinFactory
     /// </summary>
     /// <param name="coinType">The type of coin to get the color of.</param>
     /// <returns>The color of a type of coin.</returns>
-    public static Color GetColor(CoinType coinType)
+    public Color GetColor(CoinType coinType)
     {
         switch (coinType)
         {

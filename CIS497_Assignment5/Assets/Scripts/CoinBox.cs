@@ -9,11 +9,18 @@ using UnityEngine;
 
 public class CoinBox : MonoBehaviour
 {
+    private SimpleCoinFactory coinFactory;
+
     [SerializeField] private SimpleCoinFactory.CoinType coinType;
 
     // The current color of the box.
     private Color currentColor;
 
+
+    private void Awake()
+    {
+        coinFactory = new SimpleCoinFactory();
+    }
 
     private void Start()
     {
@@ -23,7 +30,7 @@ public class CoinBox : MonoBehaviour
     // Change the color of the coin box to match the color of the coin it spawns
     private void ChangeColor()
     {
-        GetComponent<MeshRenderer>().material.color = SimpleCoinFactory.GetColor(coinType);
+        GetComponent<MeshRenderer>().material.color = coinFactory.GetColor(coinType);
     }
 
     /// <summary>
@@ -39,12 +46,12 @@ public class CoinBox : MonoBehaviour
     /// </summary>
     private void SpawnCoin()
     {
-        GameObject coin = SimpleCoinFactory.CreateCoin(coinType);
+        GameObject coin = coinFactory.CreateCoin(coinType);
 
         if (coin != null)
         {
             // This enables the box color to be changed at runtime!
-            if (currentColor != SimpleCoinFactory.GetColor(coinType))
+            if (currentColor != coinFactory.GetColor(coinType))
                 ChangeColor();
 
             Instantiate(coin, transform.position + transform.up * 2f, coin.transform.rotation);
