@@ -3,12 +3,12 @@
 // Author :            Kyle Grenier
 // Creation Date :     03/07/2021
 //
-// Brief Description : Defines starting characteristics for a sword.
+// Brief Description : Defines a sword.
 *****************************************************************************/
 public class Sword : Weapon
 {
-    private void Start()
+    public override string Attack()
     {
-        weaponType = WeaponType.Staff;
+        return "Player slashes " + WeaponStats.weaponName;
     }
 }

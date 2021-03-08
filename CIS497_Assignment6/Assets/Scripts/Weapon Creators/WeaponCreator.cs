@@ -6,6 +6,7 @@
 // Brief Description : Abstract class for creating weapons.
 *****************************************************************************/
 using UnityEngine;
+using System;
 
 public abstract class WeaponCreator
 {

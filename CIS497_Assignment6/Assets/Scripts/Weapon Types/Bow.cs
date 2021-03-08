@@ -7,8 +7,8 @@
 *****************************************************************************/
 public class Bow : Weapon
 {
-    private void Start()
+    public override string Attack()
     {
-        weaponType = WeaponType.Bow;
+        return "Player shoots " + WeaponStats.weaponName;
     }
 }

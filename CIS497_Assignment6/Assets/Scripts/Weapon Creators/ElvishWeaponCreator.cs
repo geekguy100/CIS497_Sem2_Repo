@@ -22,23 +22,18 @@ public class ElvishWeaponCreator : WeaponCreator
 
         switch (weaponType)
         {
-            case WeaponType.Axe:
-                weapon.Init(durability: 100f, damage: 50f, WeaponRace.Elvish);
-                break;
             case WeaponType.Sword:
-                weapon.Init(durability: 100f, damage: 30f, WeaponRace.Elvish);
+                weapon.Init(weaponType: weaponType, durability: 20f, damage: 30f, WeaponRace.Elvish);
                 break;
             case WeaponType.Bow:
-                weapon.Init(durability: 100f, damage: 20f, WeaponRace.Elvish);
-                break;
-            case WeaponType.Staff:
-                weapon.Init(durability: 100f, damage: 40f, WeaponRace.Elvish);
+                weapon.Init(weaponType: weaponType, durability: 100f, damage: 20f, WeaponRace.Elvish);
                 break;
             default:
                 Debug.LogWarning("ElvishWeaponCreator: invalid WeaponType passed. Returning null...");
                 return null;     
         }
 
-        return weapon.gameObject;
+        EventManager.WeaponCreated(weapon);
+        return prefab;
     }
 }

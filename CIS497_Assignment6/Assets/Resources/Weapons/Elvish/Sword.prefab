@@ -125,3 +125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe589762db8147f4aae153663e40c64e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponName: Elvish Sword
+  durability: 20
+  damage: 30
+  weaponRace: 1
+  weaponType: 1

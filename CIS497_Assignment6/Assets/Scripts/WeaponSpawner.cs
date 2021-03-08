@@ -10,25 +10,25 @@ using UnityEngine;
 public class WeaponSpawner : MonoBehaviour
 {
     private WeaponRace weaponRace;
-
     private WeaponCreator weaponCreator;
 
     private void Awake()
     {
         weaponRace = WeaponRace.Elvish;
         weaponCreator = new ElvishWeaponCreator();
+
+        // Call this to update race UI.
+        EventManager.WeaponRaceChanged(weaponRace);
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
-        {
             SwapWeaponRace();
-        }
         else if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
             Instantiate(weaponCreator.CreateWeaponPrefab(WeaponType.Sword));
-        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+            Instantiate(weaponCreator.CreateWeaponPrefab(WeaponType.Bow));
     }
 
     private void SwapWeaponRace()
@@ -50,5 +50,7 @@ public class WeaponSpawner : MonoBehaviour
                 weaponCreator = new DwarvenWeaponCreator();
                 break;
         }
+
+        EventManager.WeaponRaceChanged(weaponRace);
     }
 }

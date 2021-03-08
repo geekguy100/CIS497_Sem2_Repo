@@ -3,7 +3,7 @@
 // Author :            Kyle Grenier
 // Creation Date :     03/07/2021
 //
-// Brief Description : Creates dwarven weapons with stats of an dwarven weapon.
+// Brief Description : Creates dwarven weapons with stats of a dwarven weapon.
 *****************************************************************************/
 using UnityEngine;
 
@@ -22,23 +22,18 @@ public class DwarvenWeaponCreator : WeaponCreator
 
         switch (weaponType)
         {
-            case WeaponType.Axe:
-                weapon.Init(durability: 100f, damage: 55f, WeaponRace.Dwarven);
-                break;
             case WeaponType.Sword:
-                weapon.Init(durability: 100f, damage: 20f, WeaponRace.Dwarven);
+                weapon.Init(weaponType: weaponType, durability: 96f, damage: 23f, WeaponRace.Dwarven);
                 break;
             case WeaponType.Bow:
-                weapon.Init(durability: 100f, damage: 10f, WeaponRace.Dwarven);
-                break;
-            case WeaponType.Staff:
-                weapon.Init(durability: 100f, damage: 30f, WeaponRace.Dwarven);
+                weapon.Init(weaponType: weaponType, durability: 60f, damage: 10f, WeaponRace.Dwarven);
                 break;
             default:
                 Debug.LogWarning("DwarvenWeaponCreator: invalid WeaponType passed. Returning null...");
                 return null;
         }
 
+        EventManager.WeaponCreated(weapon);
         return prefab;
     }
 }

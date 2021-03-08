@@ -6,4 +6,4 @@
 // Brief Description : ADD BRIEF DESCRIPTION OF THE FILE HERE
 *****************************************************************************/
 public enum WeaponRace { UNDEFINED, Elvish, Dwarven }
-public enum WeaponType { UNDEFINED, Sword, Staff, Bow, Axe };
+public enum WeaponType { UNDEFINED, Sword, Bow };

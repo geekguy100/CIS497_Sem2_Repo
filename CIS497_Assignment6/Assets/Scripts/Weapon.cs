@@ -1,21 +1,21 @@
 /*****************************************************************************
 // File Name :         Weapon.cs
 // Author :            Kyle Grenier
-// Creation Date :     #CREATIONDATE#
+// Creation Date :     03/07/2021
 //
-// Brief Description : ADD BRIEF DESCRIPTION OF THE FILE HERE
+// Brief Description : Defines functionality for a weapon.
 *****************************************************************************/
 using UnityEngine;
 
-public struct WeaponData
+public struct WeaponStats
 {
-    private string weaponName;
-    private float durability;
-    private float damage;
-    private WeaponRace weaponRace;
-    private WeaponType weaponType;
+    public string weaponName { get; private set; }
+    public float durability { get; private set; }
+    public float damage { get; private set; }
+    public WeaponRace weaponRace { get; private set; }
+    public WeaponType weaponType { get; private set; }
 
-    public WeaponData(string weaponName, float durability, float damage, WeaponRace weaponRace, WeaponType weaponType)
+    public WeaponStats(string weaponName, float durability, float damage, WeaponRace weaponRace, WeaponType weaponType)
     {
         this.weaponName = weaponName;
         this.durability = durability;
@@ -27,31 +27,29 @@ public struct WeaponData
 
 public abstract class Weapon : MonoBehaviour
 {
-    private string weaponName;
-    private float durability;
-    private float damage;
-    private WeaponRace weaponRace;
-    protected WeaponType weaponType;
+    [SerializeField] private string weaponName = "UNDEFINED";
+    [SerializeField] private float durability = 0;
+    [SerializeField] private float damage = 0;
+    [SerializeField] private WeaponRace weaponRace = WeaponRace.UNDEFINED;
+    [SerializeField] private WeaponType weaponType = WeaponType.UNDEFINED;
 
-    private void Awake()
-    {
-        weaponName = "Undefined Weapon";
-        durability = 0;
-        damage = 0;
-        weaponRace = WeaponRace.UNDEFINED;
-        weaponType = WeaponType.UNDEFINED;
-    }
+    public WeaponStats WeaponStats { get { return GetStats(); } }
 
-    public void Init(float durability, float damage, WeaponRace weaponRace)
+    public void Init(WeaponType weaponType, float durability, float damage, WeaponRace weaponRace)
     {
+        this.weaponType = weaponType;
         this.durability = durability;
         this.damage = damage;
         this.weaponRace = weaponRace;
-        this.weaponName = this.weaponRace.ToString() + " " + this.weaponType.ToString();
+        weaponName = this.weaponRace.ToString() + " " + weaponType.ToString();
+
+        gameObject.name = weaponName;
     }
 
-    public WeaponData GetData()
+    public WeaponStats GetStats()
     {
-        return new WeaponData(weaponName, durability, damage, weaponRace, weaponType);
+        return new WeaponStats(weaponName, durability, damage, weaponRace, weaponType);
     }
+
+    public abstract string Attack();
 }
