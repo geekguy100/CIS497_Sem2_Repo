@@ -16,16 +16,15 @@ public class Button : MonoBehaviour
     [Tooltip("The text that displays above the button.")]
     [SerializeField] private TextMeshProUGUI commandText;
 
-    private void Start()
-    {
-        if (storedCommand == null)
-            commandText.text = string.Empty;
-    }
-
     public void UpdateCommand(ICommand command)
     {
         storedCommand = command;
-        commandText.text = storedCommand.GetDescription();
+        commandText.text = command.GetDescription();
+    }
+
+    public ICommand GetCommand()
+    {
+        return storedCommand;
     }
 
     private void OnMouseDown()

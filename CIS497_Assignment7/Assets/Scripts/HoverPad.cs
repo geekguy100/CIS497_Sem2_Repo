@@ -12,7 +12,7 @@ public class HoverPad : MonoBehaviour
     private new bool enabled = false;
     public bool Enabled { get { return enabled; } }
 
-    [SerializeField] private Material centerMat;
+    [SerializeField] private GameObject centerMat;
     [SerializeField] private float force;
     private BoxCollider boxCollider;
 
@@ -35,14 +35,14 @@ public class HoverPad : MonoBehaviour
     private void Enable()
     {
         enabled = true;
-        centerMat.color = Color.green;
+        centerMat.GetComponent<MeshRenderer>().material.color = Color.green;
         boxCollider.enabled = true;
     }
 
     private void Disable()
     {
         enabled = false;
-        centerMat.color = Color.red;
+        centerMat.GetComponent<MeshRenderer>().material.color = Color.red;
         boxCollider.enabled = false;
     }
 
