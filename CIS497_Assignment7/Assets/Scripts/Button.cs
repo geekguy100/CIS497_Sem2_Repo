@@ -12,23 +12,31 @@ public class Button : MonoBehaviour
 {
     // This is the command that pressing this button will activate.
     private ICommand storedCommand;
+    private int commandIndex = -1;
 
     [Tooltip("The text that displays above the button.")]
     [SerializeField] private TextMeshProUGUI commandText;
 
-    public void UpdateCommand(ICommand command)
+    public void UpdateCommand(ICommand command, int commandIndex)
     {
+        if (command == null)
+        {
+            Debug.LogWarning(gameObject.name + ": Cannot update command because it does not exist.");
+            return;
+        }
+        
         storedCommand = command;
+        this.commandIndex = commandIndex;
         commandText.text = command.GetDescription();
-    }
-
-    public ICommand GetCommand()
-    {
-        return storedCommand;
     }
 
     private void OnMouseDown()
     {
         storedCommand?.Execute();
+    }
+
+    public int GetCommandIndex()
+    {
+        return commandIndex;
     }
 }

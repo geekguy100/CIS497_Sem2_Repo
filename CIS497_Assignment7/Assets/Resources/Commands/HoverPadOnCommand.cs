@@ -14,17 +14,19 @@ public class HoverPadOnCommand : ICommand
     public HoverPadOnCommand(HoverPad hoverPad)
     {
         this.hoverPad = hoverPad;
-        description = "Hover Pad Off";
+        description = "Hover Pad On";
     }
 
     public void Execute()
     {
-        hoverPad.Execute();
+        hoverPad.TurnOn();
+        description = "Hover Pad On";
+    }
 
-        if (hoverPad.Enabled)
-            description = "Hover Pad On";
-        else
-            description = "Hover Pad Off";
+    public void Undo()
+    {
+        hoverPad.TurnOff();
+        description = "Hover Pad Off";
     }
 
     public string GetDescription()

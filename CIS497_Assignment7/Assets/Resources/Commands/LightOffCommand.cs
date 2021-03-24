@@ -1,34 +1,33 @@
 /*****************************************************************************
-// File Name :         LightOnCommand.cs
+// File Name :         LightOffCommand.cs
 // Author :            Kyle Grenier
-// Creation Date :     03/21/2021
+// Creation Date :     03/23/2021
 //
-// Brief Description : A command that turns a light on and off.
+// Brief Description : ADD BRIEF DESCRIPTION OF THE FILE HERE
 *****************************************************************************/
 using UnityEngine;
 
-public class LightOnCommand : ICommand
+public class LightOffCommand : ICommand
 {
     private Light light;
     private string description;
 
-    public LightOnCommand(Light light)
+    public LightOffCommand(Light light)
     {
         this.light = light;
         description = "Light Off";
     }
 
-    /// <summary>
-    /// Turns the light on or off.
-    /// </summary>
     public void Execute()
     {
-        light.enabled = !light.enabled;
+        light.enabled = false;
+        description = "Light Off";
+    }
 
-        if (light.enabled)
-            description = "Light On";
-        else
-            description = "Light Off";
+    public void Undo()
+    {
+        light.enabled = true;
+        description = "Light On";
     }
 
     public string GetDescription()

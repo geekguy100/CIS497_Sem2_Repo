@@ -20,18 +20,10 @@ public class RemoteControl : MonoBehaviour
 
     private void Start()
     {
-        foreach (Button b in buttons)
-            b.UpdateCommand(new LightOnCommand(room.GetLight()));
-    }
-
-    public void UpdateCommand(int buttonIndex, ICommand command)
-    {
-        buttons[buttonIndex].UpdateCommand(command);
-    }
-
-    public ICommand GetButtonCommand(int buttonIndex)
-    {
-        return buttons[buttonIndex].GetCommand();
+        for (int i = 0; i < buttons.Length; ++i)
+        {
+            NextCommand(i);
+        }
     }
 
     /// <summary>
@@ -40,23 +32,21 @@ public class RemoteControl : MonoBehaviour
     /// <param name="buttonIndex">The index of the button to update.</param>
     public void NextCommand(int buttonIndex)
     {
-        ICommand command;
-        string previousCommand = buttons[buttonIndex].GetCommand().ToString();
-        print(previousCommand);
+        int index = buttons[buttonIndex].GetCommandIndex();
+        string commandName = CommandFactory.GetNextCommandName(ref index);
 
-        switch (previousCommand)
-        {
-            case "HoverPadOnCommand":
-                command = new LightOnCommand(room.GetLight());
-                break;
-            case "LightOnCommand":
-                command = new HoverPadOnCommand(room.GetHoverPad());
-                break;
-            default:
-                command = null;
-                break;
-        }
+        // The argument that will be passed into the command.
+        Object[] args = new Object[1];
 
-        buttons[buttonIndex].UpdateCommand(command);
+        if (commandName.Contains("Light"))
+            args[0] = room.GetLight();
+        else if (commandName.Contains("HoverPad"))
+            args[0] = room.GetHoverPad();
+        else
+            Debug.LogWarning("RemoteControl: arg is null! Command name improper??");
+
+        ICommand command = CommandFactory.GetCommand(commandName, args);
+
+        buttons[buttonIndex].UpdateCommand(command, index);
     }
 }

@@ -21,15 +21,14 @@ public class HoverPad : MonoBehaviour
         boxCollider = GetComponent<BoxCollider>();
     }
 
-    /// <summary>
-    /// Enables or disables the hover pad.
-    /// </summary>
-    public void Execute()
+    public void TurnOn()
     {
-        if (enabled)
-            Disable();
-        else
-            Enable();
+        Enable();
+    }
+
+    public void TurnOff()
+    {
+        Disable();
     }
 
     private void Enable()
