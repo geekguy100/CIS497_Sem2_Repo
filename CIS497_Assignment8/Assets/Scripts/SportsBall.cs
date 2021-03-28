@@ -29,17 +29,17 @@ public abstract class SportsBall : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    public void Kick()
+    public void Kick(Vector3 dir)
     {
         KickData data = new KickData(GetName(), GetKickForce());
         EventManager.KickOff(data);
-        Launch();
+        Launch(dir);
     }
 
-    protected virtual void Launch()
+    protected virtual void Launch(Vector3 dir)
     {
         print("LAUNCH " + gameObject.name);
-        rb.AddForce(transform.forward * GetKickForce(), ForceMode.Impulse);
+        rb.AddForce(dir * GetKickForce(), ForceMode.Impulse);
     }
 
     protected abstract string GetName();
