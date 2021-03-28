@@ -11,6 +11,7 @@ public static class EventManager
 {
     public static event Action<KickData> OnKickOff;
     public static event Action OnTargetHit;
+    public static event Action OnBallDestroyed;
 
     public static void KickOff(KickData kickData)
     {
@@ -20,5 +21,10 @@ public static class EventManager
     public static void TargetHit()
     {
         OnTargetHit?.Invoke();
+    }
+
+    public static void BallDestroyed()
+    {
+        OnBallDestroyed?.Invoke();
     }
 }

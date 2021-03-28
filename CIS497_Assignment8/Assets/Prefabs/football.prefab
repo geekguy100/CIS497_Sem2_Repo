@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 677995117184987009}
   - component: {fileID: 7181890582613128096}
   - component: {fileID: 919132149563731011}
+  - component: {fileID: -8241389323493357801}
   m_Layer: 6
   m_Name: football
   m_TagString: Untagged
@@ -76,6 +77,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6140333ba6b0314dacd7fc2b1821fe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-8241389323493357801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408087204058862294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60a6d9cfd4fe4cb489f62957936cce59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 50
 --- !u!1 &8584732456217425130
 GameObject:
   m_ObjectHideFlags: 0

@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 2697754698603900630}
   - component: {fileID: 2499745730646193312}
   - component: {fileID: 919132149571072639}
+  - component: {fileID: 7333242341049079892}
   m_Layer: 6
   m_Name: SOCCER_Ball
   m_TagString: Untagged
@@ -156,3 +157,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: add981251135da04686cd0e0f22f78a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7333242341049079892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4043344513785572312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60a6d9cfd4fe4cb489f62957936cce59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 50

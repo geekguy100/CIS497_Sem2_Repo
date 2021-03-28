@@ -14,11 +14,20 @@ public class Scoreboard : MonoBehaviour
     [SerializeField] private TextMeshProUGUI ballText;
     [SerializeField] private TextMeshProUGUI forceText;
 
+    #region --- Event Stuff ---
     private void OnEnable()
     {
         EventManager.OnKickOff += UpdateKickData;
         EventManager.OnTargetHit += UpdateScore;
     }
+
+    private void OnDisable()
+    {
+        EventManager.OnKickOff -= UpdateKickData;
+        EventManager.OnTargetHit -= UpdateScore;
+    }
+
+    #endregion
 
     private void UpdateKickData(KickData data)
     {
