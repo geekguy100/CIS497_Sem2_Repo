@@ -16,7 +16,10 @@ public struct KickData
     }
 
     private string ballName;
+    public string BallName { get { return ballName; } }
+
     private Vector3 kickForce;
+    public Vector3 KickForce { get { return kickForce; } }
 }
 
 [RequireComponent(typeof(Rigidbody))]

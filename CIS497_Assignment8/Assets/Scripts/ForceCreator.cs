@@ -48,7 +48,7 @@ public class ForceCreator : MonoBehaviour
 
         float distance = Vector3.Distance(startPos, endPos);
 
-        print(-(endPos - startPos).normalized * distance / 2);
+        //print(-(endPos - startPos).normalized * distance / 2);
         return -(endPos - startPos).normalized * distance / 2;
     }
 }
