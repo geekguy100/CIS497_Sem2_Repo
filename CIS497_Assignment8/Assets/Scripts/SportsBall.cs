@@ -9,14 +9,14 @@ using UnityEngine;
 
 public struct KickData
 {
-    public KickData(string ballName, float kickForce)
+    public KickData(string ballName, Vector3 kickForce)
     {
         this.ballName = ballName;
         this.kickForce = kickForce;
     }
 
     private string ballName;
-    private float kickForce;
+    private Vector3 kickForce;
 }
 
 [RequireComponent(typeof(Rigidbody))]
@@ -31,7 +31,7 @@ public abstract class SportsBall : MonoBehaviour
 
     public void Kick(Vector3 dir)
     {
-        KickData data = new KickData(GetName(), GetKickForce());
+        KickData data = new KickData(GetName(), GetKickForce() * dir);
         EventManager.KickOff(data);
         Launch(dir);
     }

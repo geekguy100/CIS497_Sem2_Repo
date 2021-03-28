@@ -4,7 +4,7 @@
 // Creation Date :     03/27/2021
 //
 // Brief Description : Enables a line renderer to determine the direction the ball will be shot in,
-                       and returns the direction upon deactivation.
+                       and returns the force upon deactivation.
 *****************************************************************************/
 using UnityEngine;
 
@@ -47,6 +47,7 @@ public class ForceCreator : MonoBehaviour
         lineRenderer.enabled = false;
 
         float distance = Vector3.Distance(startPos, endPos);
+
         print(-(endPos - startPos).normalized * distance / 2);
         return -(endPos - startPos).normalized * distance / 2;
     }
