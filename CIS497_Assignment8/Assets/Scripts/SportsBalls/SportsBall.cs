@@ -26,25 +26,11 @@ public struct KickData
 public abstract class SportsBall : MonoBehaviour
 {
     private Rigidbody rb;
-    private bool applicationQuitting = false;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
-
-    #region --- Application Quitting Event ---
-    private void OnEnable()
-    {
-        Application.quitting += () => { applicationQuitting = true; };
-    }
-
-    //private void SetApplicationQuitting()
-    //{
-    //    applicationQuitting = true;
-    //}
-
-    #endregion
 
     public void Kick(Vector3 dir)
     {
@@ -63,7 +49,6 @@ public abstract class SportsBall : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (!applicationQuitting)
-            EventManager.BallDestroyed();
+        EventManager.BallDestroyed();
     }
 }

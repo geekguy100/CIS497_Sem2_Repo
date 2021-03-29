@@ -11,9 +11,12 @@ public class BallSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] balls;
 
+    private bool applicationQuitting = false;
+
     private void OnEnable()
     {
         EventManager.OnBallDestroyed += SpawnBall;
+        Application.quitting += () => { applicationQuitting = true; };
     }
 
     private void OnDisable()
@@ -28,7 +31,7 @@ public class BallSpawner : MonoBehaviour
 
     private void SpawnBall()
     {
-        if (GameManager.instance.GameOver)
+        if (GameManager.instance.GameOver || applicationQuitting)
             return;
 
         GameObject ball = ArrayHelper.GetRandomElement(balls);

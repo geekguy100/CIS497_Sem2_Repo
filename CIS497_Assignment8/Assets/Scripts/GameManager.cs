@@ -30,14 +30,27 @@ public class GameManager : MonoBehaviour
     {
         EventManager.OnGameOver += SetGameOver;
         EventManager.OnGameOver += Restart;
+        EventManager.OnGameWin += SetGameOver;
+        EventManager.OnGameWin += Restart;
     }
 
     private void OnDisable()
     {
         EventManager.OnGameOver -= SetGameOver;
         EventManager.OnGameOver -= Restart;
+        EventManager.OnGameWin -= SetGameOver;
+        EventManager.OnGameWin -= Restart;
     }
     #endregion
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            gameOver = true;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
 
     private void SetGameOver()
     {

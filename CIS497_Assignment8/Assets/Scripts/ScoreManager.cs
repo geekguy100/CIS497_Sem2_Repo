@@ -10,6 +10,8 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour
 {
     private int score = 0;
+    private int winningScore = 10;
+
     private int maxLives = 3;
     private int lives;
 
@@ -39,6 +41,8 @@ public class ScoreManager : MonoBehaviour
     {
         score += 1;
         EventManager.UpdateScore(score);
+        if (score >= winningScore)
+            EventManager.GameWin();
     }
 
     private void DecrementLives()

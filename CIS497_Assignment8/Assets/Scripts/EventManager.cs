@@ -16,6 +16,7 @@ public static class EventManager
     public static event Action OnMissTarget;
     public static event Action OnGameOver;
     public static event Action<int> OnUpdateLives;
+    public static event Action OnGameWin;
 
     public static void KickOff(KickData kickData)
     {
@@ -50,5 +51,10 @@ public static class EventManager
     public static void UpdateLives(int lives)
     {
         OnUpdateLives?.Invoke(lives);
+    }
+
+    public static void GameWin()
+    {
+        OnGameWin?.Invoke();
     }
 }

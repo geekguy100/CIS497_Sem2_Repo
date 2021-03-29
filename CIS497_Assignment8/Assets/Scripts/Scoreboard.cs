@@ -16,6 +16,7 @@ public class Scoreboard : MonoBehaviour
     [SerializeField] private TextMeshProUGUI forceText;
     [SerializeField] private TextMeshProUGUI livesText;
     [SerializeField] private TextMeshProUGUI gameOverText;
+    [SerializeField] private TextMeshProUGUI winText;
 
 
     #region --- Event Stuff ---
@@ -25,6 +26,7 @@ public class Scoreboard : MonoBehaviour
         EventManager.OnUpdateScore += UpdateScore;
         EventManager.OnUpdateLives += UpdateLives;
         EventManager.OnGameOver += GameOver;
+        EventManager.OnGameWin += Win;
     }
 
     private void OnDisable()
@@ -33,6 +35,7 @@ public class Scoreboard : MonoBehaviour
         EventManager.OnUpdateScore -= UpdateScore;
         EventManager.OnUpdateLives -= UpdateLives;
         EventManager.OnGameOver -= GameOver;
+        EventManager.OnGameWin -= Win;
     }
 
     #endregion
@@ -45,12 +48,12 @@ public class Scoreboard : MonoBehaviour
 
     private void UpdateScore(int score)
     {
-        scoreText.text = "SCORE: " + score;
+        scoreText.text = "SCORE: " + score.ToString("X3");
     }
 
     private void UpdateLives(int lives)
     {
-        livesText.text = "LIVES: " + lives;
+        livesText.text = "LIVES: " + lives.ToString("X3");
     }
 
     private void GameOver()
@@ -61,5 +64,15 @@ public class Scoreboard : MonoBehaviour
         }
 
         gameOverText.gameObject.SetActive(true);
+    }
+
+    private void Win()
+    {
+        for (int i = 0; i < scorePanel.transform.childCount; ++i)
+        {
+            scorePanel.transform.GetChild(i).gameObject.SetActive(false);
+        }
+
+        winText.gameObject.SetActive(true);
     }
 }
