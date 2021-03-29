@@ -14,6 +14,9 @@ public class DistanceDestroy : MonoBehaviour
     private void Update()
     {
         if (Vector3.Distance(Vector3.zero, transform.position) > maxDistance)
+        {
+            EventManager.MissTarget();
             Destroy(gameObject);
+        }
     }
 }

@@ -15,6 +15,8 @@ public class PlayerInteraction : MonoBehaviour
     private float rayLength = 20f;
     private SportsBall ball = null;
 
+    private RaycastHit lastHit;
+
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -26,10 +28,14 @@ public class PlayerInteraction : MonoBehaviour
         else if (ball != null && Input.GetMouseButton(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            Physics.Raycast(ray, out hit, rayLength);
+            RaycastHit currentHit;
+            Physics.Raycast(ray, out currentHit, rayLength);
+            if (currentHit.collider != null)
+                lastHit = currentHit;
+            else
+                currentHit = lastHit;
 
-            ForceCreator.instance.Activate(ball.transform, hit.point);
+            ForceCreator.instance.Activate(ball.transform, currentHit.point);
         }
         else if (ball != null && Input.GetMouseButtonUp(0))
         {

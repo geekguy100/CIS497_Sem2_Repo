@@ -3,7 +3,7 @@
 // Author :            Kyle Grenier
 // Creation Date :     03/27/2021
 //
-// Brief Description : ADD BRIEF DESCRIPTION OF THE FILE HERE
+// Brief Description : An abstract class that defines a sports ball's behaviour.
 *****************************************************************************/
 using UnityEngine;
 
@@ -55,14 +55,11 @@ public abstract class SportsBall : MonoBehaviour
 
     protected virtual void Launch(Vector3 dir)
     {
-        print("LAUNCH " + gameObject.name);
         rb.AddForce(dir * GetKickForce(), ForceMode.Impulse);
     }
 
     protected abstract string GetName();
     protected abstract float GetKickForce();
-
-
 
     private void OnDestroy()
     {

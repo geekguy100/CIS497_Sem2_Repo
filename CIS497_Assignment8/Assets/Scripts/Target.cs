@@ -48,6 +48,9 @@ public class Target : MonoBehaviour
 
         while(true)
         {
+            if (GameManager.instance.GameOver)
+                yield break;
+
             if (translationCoroutine != null)
                 StopCoroutine(translationCoroutine);
 

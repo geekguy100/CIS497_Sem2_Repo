@@ -13,8 +13,6 @@ public class TargetCollider : MonoBehaviour
     {
         if (col.gameObject.layer == LayerMask.NameToLayer("Sportsball"))
         {
-            print("TARGET HIT!!");
-            ScoreManager.Score += 1;
             EventManager.TargetHit();
         }
     }

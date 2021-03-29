@@ -1,9 +1,9 @@
 /*****************************************************************************
 // File Name :         BallSpawner.cs
 // Author :            Kyle Grenier
-// Creation Date :     #CREATIONDATE#
+// Creation Date :     03/28/2021
 //
-// Brief Description : ADD BRIEF DESCRIPTION OF THE FILE HERE
+// Brief Description : Spawns in a random sports ball when one is needed.
 *****************************************************************************/
 using UnityEngine;
 
@@ -21,8 +21,16 @@ public class BallSpawner : MonoBehaviour
         EventManager.OnBallDestroyed -= SpawnBall;
     }
 
+    private void Start()
+    {
+        SpawnBall();
+    }
+
     private void SpawnBall()
     {
+        if (GameManager.instance.GameOver)
+            return;
+
         GameObject ball = ArrayHelper.GetRandomElement(balls);
         Instantiate(ball, transform.position, ball.transform.rotation);
     }

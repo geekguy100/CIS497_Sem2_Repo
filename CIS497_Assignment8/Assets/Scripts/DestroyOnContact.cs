@@ -11,7 +11,6 @@ public class DestroyOnContact : MonoBehaviour
 {
     private void OnCollisionEnter(Collision col)
     {
-        print(gameObject.name);
         Destroy(col.gameObject);
     }
 }

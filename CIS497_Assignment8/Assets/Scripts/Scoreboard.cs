@@ -10,21 +10,29 @@ using TMPro;
 
 public class Scoreboard : MonoBehaviour
 {
+    [SerializeField] private GameObject scorePanel;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI ballText;
     [SerializeField] private TextMeshProUGUI forceText;
+    [SerializeField] private TextMeshProUGUI livesText;
+    [SerializeField] private TextMeshProUGUI gameOverText;
+
 
     #region --- Event Stuff ---
     private void OnEnable()
     {
         EventManager.OnKickOff += UpdateKickData;
-        EventManager.OnTargetHit += UpdateScore;
+        EventManager.OnUpdateScore += UpdateScore;
+        EventManager.OnUpdateLives += UpdateLives;
+        EventManager.OnGameOver += GameOver;
     }
 
     private void OnDisable()
     {
         EventManager.OnKickOff -= UpdateKickData;
-        EventManager.OnTargetHit -= UpdateScore;
+        EventManager.OnUpdateScore -= UpdateScore;
+        EventManager.OnUpdateLives -= UpdateLives;
+        EventManager.OnGameOver -= GameOver;
     }
 
     #endregion
@@ -35,8 +43,23 @@ public class Scoreboard : MonoBehaviour
         forceText.text = "FORCE: " + System.Math.Round(data.KickForce.magnitude, 2);
     }
 
-    private void UpdateScore()
+    private void UpdateScore(int score)
     {
-        scoreText.text = "SCORE: " + ScoreManager.Score;
+        scoreText.text = "SCORE: " + score;
+    }
+
+    private void UpdateLives(int lives)
+    {
+        livesText.text = "LIVES: " + lives;
+    }
+
+    private void GameOver()
+    {
+        for(int i = 0; i < scorePanel.transform.childCount; ++i)
+        {
+            scorePanel.transform.GetChild(i).gameObject.SetActive(false);
+        }
+
+        gameOverText.gameObject.SetActive(true);
     }
 }
