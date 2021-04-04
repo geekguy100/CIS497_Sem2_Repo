@@ -49,6 +49,7 @@ public class CarCommunicator : MonoBehaviour
     /// </summary>
     public void CompleteCarCheck()
     {
+        carController.CompleteCheck();
         stateManager.CopDoneInterrogating();
     }
 }

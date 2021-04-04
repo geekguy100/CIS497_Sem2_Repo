@@ -43,8 +43,9 @@ public class PoliceManController : MonoBehaviour
         }
         else if (policeManStateManager.currentState == policeManStateManager.completeInvestigation)
         {
-            nearbyCar = null;
             policeManStateManager.CompleteCheck();
+            nearbyCar.CompleteCarCheck();
+            nearbyCar = null;
         }
     }
 

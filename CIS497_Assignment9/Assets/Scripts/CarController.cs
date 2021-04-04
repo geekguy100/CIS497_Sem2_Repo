@@ -16,6 +16,7 @@ public class CarController : MonoBehaviour
     [SerializeField] private float accelerationTime = 2f;
     private float currentSpeed;
     private GameObject destination;
+    private Vector3 oldPos;
 
     public CarStateManager stateManager { get; private set; }
 
@@ -47,6 +48,8 @@ public class CarController : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space) && !modifyingSpeed)
                 modifySpeedCall = Accelerate();
+
+            oldPos = transform.position;
         }
         else if (stateManager.currentState == stateManager.gettingPulledOverState)
         {
@@ -73,6 +76,10 @@ public class CarController : MonoBehaviour
         return currentSpeed;
     }
 
+    public void CompleteCheck()
+    {
+        transform.position = oldPos;
+    }
 
 
     private Coroutine Accelerate()
@@ -91,7 +98,7 @@ public class CarController : MonoBehaviour
         float cSpeed = currentSpeed;
         float counter = 0;
 
-        while (currentSpeed < maxSpeed)
+        while (currentSpeed < finalSpeed)
         {
             counter += Time.deltaTime;
             currentSpeed = Mathf.Lerp(cSpeed, finalSpeed, counter / time);
