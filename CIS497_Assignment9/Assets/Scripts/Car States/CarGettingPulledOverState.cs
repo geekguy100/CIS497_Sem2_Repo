@@ -1,9 +1,9 @@
 /*****************************************************************************
 // File Name :         CarGettingPulledOverState.cs
 // Author :            Kyle Grenier
-// Creation Date :     #CREATIONDATE#
+// Creation Date :     04/02/2021
 //
-// Brief Description : ADD BRIEF DESCRIPTION OF THE FILE HERE
+// Brief Description : State car enters when it is being pulled over.
 *****************************************************************************/
 using UnityEngine;
 

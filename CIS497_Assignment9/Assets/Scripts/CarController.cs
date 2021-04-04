@@ -1,9 +1,9 @@
 /*****************************************************************************
 // File Name :         CarController.cs
 // Author :            Kyle Grenier
-// Creation Date :     #CREATIONDATE#
+// Creation Date :     04/02/2021
 //
-// Brief Description : ADD BRIEF DESCRIPTION OF THE FILE HERE
+// Brief Description : Script that controls the behavior of the car.
 *****************************************************************************/
 using UnityEngine;
 using System.Collections;

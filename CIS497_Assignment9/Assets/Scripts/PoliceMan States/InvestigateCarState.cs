@@ -1,9 +1,9 @@
 /*****************************************************************************
 // File Name :         InvestigateCarState.cs
 // Author :            Kyle Grenier
-// Creation Date :     #CREATIONDATE#
+// Creation Date :     04/02/2021
 //
-// Brief Description : ADD BRIEF DESCRIPTION OF THE FILE HERE
+// Brief Description : State the police man enters when he is investigating/checking a car.
 *****************************************************************************/
 using UnityEngine;
 using System.Collections;

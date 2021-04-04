@@ -1,9 +1,9 @@
 /*****************************************************************************
 // File Name :         PoliceManController.cs
 // Author :            Kyle Grenier
-// Creation Date :     #CREATIONDATE#
+// Creation Date :     04/02/2021
 //
-// Brief Description : ADD BRIEF DESCRIPTION OF THE FILE HERE
+// Brief Description : Script that controls the behavior of the police man.
 *****************************************************************************/
 using UnityEngine;
 
@@ -22,7 +22,10 @@ public class PoliceManController : MonoBehaviour
 
     private void Update()
     {
-        if (nearbyCar != null && policeManStateManager.currentState == policeManStateManager.waitForSpeedingCarState)
+        if (nearbyCar == null)
+            return;
+
+        if (policeManStateManager.currentState == policeManStateManager.waitForSpeedingCarState)
         {
             float carSpeed = nearbyCar.GetSpeed();
             if (carSpeed > speedLimit)
@@ -54,7 +57,6 @@ public class PoliceManController : MonoBehaviour
         if (other.CompareTag("Car"))
         {
             nearbyCar = other.GetComponent<CarCommunicator>();
-            print(nearbyCar.gameObject.name);
         }
     }
 }

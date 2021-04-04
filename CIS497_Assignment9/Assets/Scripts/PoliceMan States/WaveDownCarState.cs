@@ -1,12 +1,11 @@
 /*****************************************************************************
 // File Name :         WaveDownCarState.cs
 // Author :            Kyle Grenier
-// Creation Date :     #CREATIONDATE#
+// Creation Date :     04/02/2021
 //
-// Brief Description : ADD BRIEF DESCRIPTION OF THE FILE HERE
+// Brief Description : State that the police man enters when he's waving down a car and waiting for it to pull over.
 *****************************************************************************/
 using UnityEngine;
-using System.Collections;
 
 public class WaveDownCarState : PoliceManState
 {

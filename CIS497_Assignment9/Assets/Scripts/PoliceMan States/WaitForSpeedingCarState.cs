@@ -1,9 +1,9 @@
 /*****************************************************************************
 // File Name :         WaitForSpeedingCarState.cs
 // Author :            Kyle Grenier
-// Creation Date :     #CREATIONDATE#
+// Creation Date :     04/02/2021
 //
-// Brief Description : ADD BRIEF DESCRIPTION OF THE FILE HERE
+// Brief Description : State the police man enters when he is waiting for a speeding car to pass by.
 *****************************************************************************/
 using UnityEngine;
 

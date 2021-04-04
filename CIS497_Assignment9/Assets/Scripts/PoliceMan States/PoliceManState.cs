@@ -1,9 +1,9 @@
 /*****************************************************************************
 // File Name :         PoliceManState.cs
 // Author :            Kyle Grenier
-// Creation Date :     #CREATIONDATE#
+// Creation Date :     04/01/2021
 //
-// Brief Description : ADD BRIEF DESCRIPTION OF THE FILE HERE
+// Brief Description : Contract for creating a PoliceManState.
 *****************************************************************************/
 
 public interface PoliceManState

@@ -1,9 +1,9 @@
 /*****************************************************************************
 // File Name :         PoliceManCompleteCheckState.cs
 // Author :            Kyle Grenier
-// Creation Date :     #CREATIONDATE#
+// Creation Date :     04/03/2021
 //
-// Brief Description : ADD BRIEF DESCRIPTION OF THE FILE HERE
+// Brief Description : The state that the police man enters after he completes his check.
 *****************************************************************************/
 using UnityEngine;
 
@@ -18,7 +18,7 @@ public class PoliceManCompleteCheckState : PoliceManState
 
     public void CheckCar()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Cannot check a car. We just compelted a check.");
     }
 
     public void CompleteCheck()
@@ -30,11 +30,11 @@ public class PoliceManCompleteCheckState : PoliceManState
 
     public void SpotSpeedingCar(CarCommunicator car)
     {
-        throw new System.NotImplementedException();
+        Debug.Log("We just completed a check. It's too soon to spot a speeding car.");
     }
 
     public void StartCarCheck()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("We just completed a check. Cannot start another one so soon.");
     }
 }
