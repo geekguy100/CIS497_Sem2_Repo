@@ -41,7 +41,7 @@ public class CarController : MonoBehaviour
 
     private void Update()
     {
-        if (stateManager.currentState != stateManager.pulledOverState)
+        if (stateManager.currentState == stateManager.travelState)
         {
             stateManager.Move(currentSpeed);
 
@@ -67,6 +67,13 @@ public class CarController : MonoBehaviour
     {
         this.destination = destination;
     }
+
+    public float GetSpeed()
+    {
+        return currentSpeed;
+    }
+
+
 
     private Coroutine Accelerate()
     {

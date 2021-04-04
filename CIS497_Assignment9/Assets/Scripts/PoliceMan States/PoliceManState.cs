@@ -10,5 +10,6 @@ public interface PoliceManState
 {
     void SpotSpeedingCar(CarCommunicator car);
     void StartCarCheck();
-    void CompleteCarCheck();
+    void CheckCar();
+    void CompleteCheck();
 }

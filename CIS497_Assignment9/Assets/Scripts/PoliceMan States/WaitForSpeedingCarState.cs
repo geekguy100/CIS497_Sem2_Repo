@@ -9,14 +9,27 @@ using UnityEngine;
 
 public class WaitForSpeedingCarState : PoliceManState
 {
-    public void CompleteCarCheck()
+    private PoliceManStateManager policeManStateManager;
+
+    public WaitForSpeedingCarState(PoliceManStateManager policeManStateManager)
     {
-        Debug.Log("We can't complete a check without having started one first!");
+        this.policeManStateManager = policeManStateManager;
+    }
+
+    public void CheckCar()
+    {
+        Debug.Log("We can't check a car without having spotted one first!");
+    }
+
+    public void CompleteCheck()
+    {
+        Debug.Log("Cannot complete the check without having started one");
     }
 
     public void SpotSpeedingCar(CarCommunicator car)
     {
         Debug.Log("We just spotted a speeding car!  " + car.gameObject.name);
+        policeManStateManager.currentState = policeManStateManager.waveDownCar;
     }
 
     public void StartCarCheck()

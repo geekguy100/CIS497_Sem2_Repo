@@ -7,7 +7,7 @@
 *****************************************************************************/
 using UnityEngine;
 
-public class CarStateManager : MonoBehaviour
+public class CarStateManager : MonoBehaviour, CarState
 {
     public CarState travelState { get; private set; }
     public CarState pulledOverState { get; private set; }
@@ -19,6 +19,7 @@ public class CarStateManager : MonoBehaviour
     {
         travelState = new CarTravelState(this);
         pulledOverState = new CarPulledOverState(this);
+        gettingPulledOverState = new CarGettingPulledOverState(this);
 
         currentState = travelState;
     }

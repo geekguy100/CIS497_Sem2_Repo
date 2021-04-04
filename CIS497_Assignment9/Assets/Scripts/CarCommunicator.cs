@@ -20,6 +20,11 @@ public class CarCommunicator : MonoBehaviour
         stateManager = GetComponent<CarStateManager>();
     }
 
+    public float GetSpeed()
+    {
+        return carController.GetSpeed();
+    }
+
     /// <summary>
     /// Notify the car that it is travelling too fast.
     /// </summary>
@@ -28,6 +33,15 @@ public class CarCommunicator : MonoBehaviour
     {
         carController.SetDestination(policeOfficer);
         stateManager.TravellingTooFast();
+    }
+
+    /// <summary>
+    /// Returns true if the car is in the process of pulling over.
+    /// </summary>
+    /// <returns>True if the car is in the process of pulling over.</returns>
+    public bool IsPullingOver()
+    {
+        return stateManager.currentState == stateManager.gettingPulledOverState;
     }
 
     /// <summary>

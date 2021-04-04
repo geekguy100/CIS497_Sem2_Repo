@@ -6,21 +6,35 @@
 // Brief Description : ADD BRIEF DESCRIPTION OF THE FILE HERE
 *****************************************************************************/
 using UnityEngine;
+using System.Collections;
 
 public class WaveDownCarState : PoliceManState
 {
-    public void CompleteCarCheck()
+    private PoliceManStateManager policeManStateManager;
+
+    public WaveDownCarState(PoliceManStateManager policeManStateManager)
     {
-        throw new System.NotImplementedException();
+        this.policeManStateManager = policeManStateManager;
+    }
+
+    public void CheckCar()
+    {
+        Debug.Log("Cannot check the car while it's still pulling over...");
+    }
+
+    public void CompleteCheck()
+    {
+        Debug.Log("Cannot complete the check since we're waving down the car.");
     }
 
     public void SpotSpeedingCar(CarCommunicator car)
     {
-        throw new System.NotImplementedException();
+        Debug.Log("We're already waving down a car - no sense pulling over another!");
     }
 
     public void StartCarCheck()
     {
-        // TODO: Check to see if the car is in range, then start the check.
+        Debug.Log("Cop is starting to investigate the car!");
+        policeManStateManager.currentState = policeManStateManager.investigateCarState;
     }
 }

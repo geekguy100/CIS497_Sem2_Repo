@@ -29,6 +29,6 @@ public class CarTravelState : CarState
     public void TravellingTooFast()
     {
         Debug.Log("Uh oh! We're going too fast!");
-        car.currentState = car.pulledOverState;
+        car.currentState = car.gettingPulledOverState;
     }
 }
