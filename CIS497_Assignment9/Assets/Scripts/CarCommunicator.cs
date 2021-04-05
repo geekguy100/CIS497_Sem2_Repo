@@ -6,6 +6,7 @@
 // Brief Description : A class that allows other classes to control the behaviour of the car, such as updating its state and properties.
 *****************************************************************************/
 using UnityEngine;
+using System;
 
 [RequireComponent(typeof(CarController))]
 [RequireComponent(typeof(CarStateManager))]
@@ -18,6 +19,11 @@ public class CarCommunicator : MonoBehaviour
     {
         carController = GetComponent<CarController>();
         stateManager = GetComponent<CarStateManager>();
+    }
+
+    public CarState GetCurrentState()
+    {
+        return stateManager.currentState;
     }
 
     public float GetSpeed()

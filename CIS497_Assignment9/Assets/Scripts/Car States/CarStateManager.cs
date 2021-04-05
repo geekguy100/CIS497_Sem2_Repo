@@ -7,13 +7,23 @@
 *****************************************************************************/
 using UnityEngine;
 
-public class CarStateManager : MonoBehaviour, CarState
+public class CarStateManager : MonoBehaviour
 {
     public CarState travelState { get; private set; }
     public CarState pulledOverState { get; private set; }
     public CarState gettingPulledOverState { get; private set; }
 
-    public CarState currentState { get; set; }
+    private CarState _currentState;
+    public CarState currentState
+    {
+        get { return _currentState; }
+        set
+        {
+            _currentState = value;
+        }
+    }
+
+
 
     private void Start()
     {

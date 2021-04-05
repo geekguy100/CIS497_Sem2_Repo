@@ -7,14 +7,19 @@
 *****************************************************************************/
 using UnityEngine;
 
-public class PoliceManStateManager : MonoBehaviour, PoliceManState
+public class PoliceManStateManager : MonoBehaviour
 {
     public PoliceManState waitForSpeedingCarState { get; private set; }
     public PoliceManState waveDownCar { get; private set; }
     public PoliceManState investigateCarState { get; private set; }
     public PoliceManState completeInvestigation { get; private set; }
 
-    public PoliceManState currentState { get; set; }
+    private PoliceManState _currentState;
+    public PoliceManState currentState
+    {
+        get { return _currentState; }
+        set { _currentState = value; EventManager.PoliceManStateChange(value); }
+    }
 
     private void Start()
     {

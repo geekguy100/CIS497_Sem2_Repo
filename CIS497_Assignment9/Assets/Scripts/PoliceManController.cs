@@ -59,4 +59,11 @@ public class PoliceManController : MonoBehaviour
             nearbyCar = other.GetComponent<CarCommunicator>();
         }
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        // Only set the car to null if we're not checking it.
+        if (other.CompareTag("Car") && policeManStateManager.currentState == policeManStateManager.waitForSpeedingCarState && nearbyCar == other.GetComponent<CarCommunicator>())
+            nearbyCar = null;
+    }
 }

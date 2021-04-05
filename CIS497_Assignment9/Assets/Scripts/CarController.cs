@@ -18,7 +18,7 @@ public class CarController : MonoBehaviour
     private GameObject destination;
     private Vector3 oldPos;
 
-    public CarStateManager stateManager { get; private set; }
+    private CarStateManager stateManager { get; set; }
 
     // Are we accelerating or decelerating?
     private bool modifyingSpeed = false;

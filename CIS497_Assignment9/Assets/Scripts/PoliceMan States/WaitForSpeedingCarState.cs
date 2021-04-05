@@ -19,21 +19,24 @@ public class WaitForSpeedingCarState : PoliceManState
     public void CheckCar()
     {
         Debug.Log("We can't check a car without having spotted one first!");
+        EventManager.PoliceManTalk("We can't check a car without having spotted one first!");
     }
 
     public void CompleteCheck()
     {
-        Debug.Log("Cannot complete the check without having started one");
+        Debug.Log("Cannot complete the check without having started one.");
+        EventManager.PoliceManTalk("Cannot complete the check without having started one.");
     }
 
     public void SpotSpeedingCar(CarCommunicator car)
     {
-        Debug.Log("We just spotted a speeding car!  " + car.gameObject.name);
+        EventManager.PoliceManTalk("We just spotted a speeding car!  " + car.gameObject.name);
         policeManStateManager.currentState = policeManStateManager.waveDownCar;
     }
 
     public void StartCarCheck()
     {
+        EventManager.PoliceManTalk("No car to check.");
         Debug.Log("No car is available to check.");
     }
 }
