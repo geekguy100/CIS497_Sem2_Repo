@@ -69,4 +69,13 @@ public class FlyingShape : MonoBehaviour, IPooledObject
     {
         return poolTag;
     }
+
+    public void OnMouseClick()
+    {
+        if (GameManager.Instance.GameOver)
+            return;
+
+        shapeBehaviour.OnMouseClick();
+        ObjectPooler.Instance.ReturnObjectToPool(poolTag, gameObject);
+    }
 }

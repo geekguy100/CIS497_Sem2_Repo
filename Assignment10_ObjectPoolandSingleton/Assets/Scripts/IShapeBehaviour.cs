@@ -31,16 +31,6 @@ public abstract class IShapeBehaviour : MonoBehaviour
         sr.color = c;
     }
 
-    protected void OnMouseDown()
-    {
-        if (GameManager.Instance.GameOver)
-            return;
-
-        PerformAction();
-        print("POOL TAG: " + poolTag + " on GO: " + gameObject.name);
-        ObjectPooler.Instance.ReturnObjectToPool(poolTag, gameObject);
-    }
-
     protected abstract void PerformAction();
 
     protected abstract Color GetColor();
@@ -48,5 +38,10 @@ public abstract class IShapeBehaviour : MonoBehaviour
     public void SetPoolTag(string poolTag)
     {
         this.poolTag = poolTag;
+    }
+
+    public void OnMouseClick()
+    {
+        PerformAction();
     }
 }

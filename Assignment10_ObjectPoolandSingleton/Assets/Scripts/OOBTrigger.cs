@@ -13,6 +13,11 @@ public class OOBTrigger : MonoBehaviour
     {
         IPooledObject pooledObj = collision.GetComponent<IPooledObject>();
         if (pooledObj != null)
+        {
+            if (collision.GetComponent<BombBehaviour>() == null)
+                --ScoreManager.Instance.Score;
+
             ObjectPooler.Instance.ReturnObjectToPool(pooledObj.GetPoolTag(), collision.gameObject);
+        }
     }
 }

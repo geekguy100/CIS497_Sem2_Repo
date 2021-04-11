@@ -166,6 +166,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35df2eee1a3e63144a9527baa5fc080b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &206949368
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 206949370}
+  - component: {fileID: 206949369}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &206949369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 206949368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad30c905d9399c444b6e0d0c2b484f72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &206949370
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 206949368}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &392284873
 GameObject:
   m_ObjectHideFlags: 0
@@ -1555,25 +1598,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: 'Left click on the objects as they pop up from the bottom of the screen.
-    Be warned, for some colors will negatively affect your score!
-
-
-    I''ll let
-    you determine which ones...
+    Be warned: BLACK and RED shapes will negatively affect your score! Don''t let
+    the any other colors go out of bounds, or you''ll be penalized!
 
 
     Win Condition:
 
-    Reach a score of 20
+    Reach
+    a score of 20
 
 
-    Lose
-    Condition:
+    Lose Condition:
 
     Score drops to -5 or below
 
 
-    Other controls:
+    Other
+    controls:
 
     R - Restart'
   m_isRightToLeft: 0
