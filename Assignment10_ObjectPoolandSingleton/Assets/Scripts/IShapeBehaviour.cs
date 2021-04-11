@@ -26,6 +26,11 @@ public abstract class IShapeBehaviour : MonoBehaviour
         sr.color = GetColor();
     }
 
+    protected void SetColor(Color c)
+    {
+        sr.color = c;
+    }
+
     protected void OnMouseDown()
     {
         PerformAction();

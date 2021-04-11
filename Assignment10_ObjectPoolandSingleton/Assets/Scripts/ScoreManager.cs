@@ -18,6 +18,7 @@ public class ScoreManager : Singleton<ScoreManager>
         set
         {
             score = value;
+            UIManager.Instance.UpdateScoreText(score);
             if (score >= maxScore)
             {
                 // GAME WIN.

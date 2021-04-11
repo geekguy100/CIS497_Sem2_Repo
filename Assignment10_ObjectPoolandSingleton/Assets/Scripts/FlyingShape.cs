@@ -12,7 +12,9 @@ public class FlyingShape : MonoBehaviour, IPooledObject
     private IShapeBehaviour shapeBehaviour;
     private Rigidbody2D rb;
 
-    [SerializeField] private float force;
+    [SerializeField] private float minForce;
+    [SerializeField] private float maxForce;
+
     [SerializeField] private string poolTag;
 
     [Header("DEBUG")]
@@ -36,7 +38,7 @@ public class FlyingShape : MonoBehaviour, IPooledObject
         if (forcedBehaviour >= 0)
             num = forcedBehaviour;
         else
-            num = Random.Range(0, 4);
+            num = Random.Range(0, 3);
 
 
         switch(num)
@@ -45,8 +47,10 @@ public class FlyingShape : MonoBehaviour, IPooledObject
                 shapeBehaviour = gameObject.AddComponent<BombBehaviour>();
                 break;
             case 1:
+                shapeBehaviour = gameObject.AddComponent<LuckyBehaviour>();
                 break;
             case 2:
+                shapeBehaviour = gameObject.AddComponent<RainbowBehaviour>();
                 break;
             case 3:
                 break;
@@ -56,6 +60,7 @@ public class FlyingShape : MonoBehaviour, IPooledObject
     public void OnSpawn()
     {
         rb.velocity = Vector2.zero;
+        float force = Random.Range(minForce, maxForce);
         rb.AddForce(Vector2.up * force, ForceMode2D.Impulse);
     }
 }
