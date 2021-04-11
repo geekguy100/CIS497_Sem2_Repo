@@ -63,4 +63,9 @@ public class FlyingShape : MonoBehaviour, IPooledObject
         float force = Random.Range(minForce, maxForce);
         rb.AddForce(Vector2.up * force, ForceMode2D.Impulse);
     }
+
+    public string GetPoolTag()
+    {
+        return poolTag;
+    }
 }
