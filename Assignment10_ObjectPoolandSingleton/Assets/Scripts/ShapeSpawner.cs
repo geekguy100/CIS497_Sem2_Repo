@@ -21,15 +21,18 @@ public class ShapeSpawner : MonoBehaviour
         yPos = minCoords.y - 2f;
 
         maxX = Camera.main.ViewportToWorldPoint(Vector2.one).x;
+    }
 
+    public void StartSpawning()
+    {
         StartCoroutine(SpawnShape());
     }
 
-    public IEnumerator SpawnShape()
+    private IEnumerator SpawnShape()
     {
-        while (true)
+        while (!GameManager.Instance.GameOver)
         {
-            float randomTime = Random.Range(1f, 5f);
+            float randomTime = Random.Range(0.25f, 2f);
             yield return new WaitForSeconds(randomTime);
 
             string poolTag = ObjectPooler.Instance.GetRandomTag();

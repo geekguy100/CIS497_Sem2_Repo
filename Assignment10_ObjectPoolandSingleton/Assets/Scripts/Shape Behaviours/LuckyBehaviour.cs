@@ -9,7 +9,7 @@ using UnityEngine;
 
 public class LuckyBehaviour : IShapeBehaviour
 {
-    private const int SCORE_MODIFIER = 5;
+    private const int SCORE_MODIFIER = 1;
 
     protected override Color GetColor()
     {

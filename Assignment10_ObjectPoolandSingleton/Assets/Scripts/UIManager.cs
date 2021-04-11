@@ -11,6 +11,7 @@ using TMPro;
 public class UIManager : Singleton<UIManager>
 {
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI gameStatusText;
 
     private void Start()
     {
@@ -20,5 +21,17 @@ public class UIManager : Singleton<UIManager>
     public void UpdateScoreText(int score)
     {
         scoreText.text = "Score: " + score;
+    }
+
+    public void GameWin()
+    {
+        gameStatusText.text = "GAME WIN";
+        gameStatusText.gameObject.SetActive(true);
+    }
+
+    public void GameLost()
+    {
+        gameStatusText.text = "GAME LOST";
+        gameStatusText.gameObject.SetActive(true);
     }
 }

@@ -22,11 +22,11 @@ public class RainbowBehaviour : IShapeBehaviour
     protected override void PerformAction()
     {
         if (currentColor == Color.red)
-            Debug.Log("RED");
+            ScoreManager.Instance.Score -= 1;
         else if (currentColor == Color.green)
-            Debug.Log("Green");
+            ScoreManager.Instance.Score += 3;
         else
-            Debug.Log("Blue");
+            ScoreManager.Instance.Score += 2;
     }
 
     private void Start()
@@ -47,7 +47,7 @@ public class RainbowBehaviour : IShapeBehaviour
                 currentColor = Color.blue;
 
             SetColor(currentColor);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.25f);
         }
     }
 }

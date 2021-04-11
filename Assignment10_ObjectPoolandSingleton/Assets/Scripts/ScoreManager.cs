@@ -10,6 +10,7 @@ using UnityEngine;
 public class ScoreManager : Singleton<ScoreManager>
 {
     [SerializeField] private int maxScore;
+    [SerializeField] private int minScore;
 
     private int score;
     public int Score
@@ -19,10 +20,11 @@ public class ScoreManager : Singleton<ScoreManager>
         {
             score = value;
             UIManager.Instance.UpdateScoreText(score);
+
             if (score >= maxScore)
-            {
-                // GAME WIN.
-            }
+                GameManager.Instance.GameWin();
+            else if (score <= minScore)
+                GameManager.Instance.GameLost();
         }
     }
 

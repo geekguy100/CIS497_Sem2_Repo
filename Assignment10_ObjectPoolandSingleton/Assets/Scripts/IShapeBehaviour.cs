@@ -33,7 +33,11 @@ public abstract class IShapeBehaviour : MonoBehaviour
 
     protected void OnMouseDown()
     {
+        if (GameManager.Instance.GameOver)
+            return;
+
         PerformAction();
+        print("POOL TAG: " + poolTag + " on GO: " + gameObject.name);
         ObjectPooler.Instance.ReturnObjectToPool(poolTag, gameObject);
     }
 

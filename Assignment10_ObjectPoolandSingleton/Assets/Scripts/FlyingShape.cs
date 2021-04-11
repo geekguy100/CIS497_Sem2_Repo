@@ -26,14 +26,11 @@ public class FlyingShape : MonoBehaviour, IPooledObject
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void Start()
-    {
-        AddRandomBehaviour();
-        shapeBehaviour.SetPoolTag(poolTag);
-    }
-
     private void AddRandomBehaviour()
     {
+        if (shapeBehaviour != null)
+            Destroy(shapeBehaviour);
+
         int num;
         if (forcedBehaviour >= 0)
             num = forcedBehaviour;
@@ -52,16 +49,20 @@ public class FlyingShape : MonoBehaviour, IPooledObject
             case 2:
                 shapeBehaviour = gameObject.AddComponent<RainbowBehaviour>();
                 break;
-            case 3:
-                break;
         }
     }
 
     public void OnSpawn()
     {
+        AddRandomBehaviour();
+        shapeBehaviour.SetPoolTag(poolTag);
+
         rb.velocity = Vector2.zero;
         float force = Random.Range(minForce, maxForce);
         rb.AddForce(Vector2.up * force, ForceMode2D.Impulse);
+
+        int num = Random.Range(0, 2) == 0 ? -1 : 1;
+        rb.AddTorque(num, ForceMode2D.Impulse);
     }
 
     public string GetPoolTag()
