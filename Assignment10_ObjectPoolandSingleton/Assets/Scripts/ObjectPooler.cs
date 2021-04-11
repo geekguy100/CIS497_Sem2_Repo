@@ -1,4 +1,4 @@
-﻿// Object Pooling Example
+// Object Pooling Example
 // Author: Owen Schaffer
 // Code for this example based on https://www.youtube.com/watch?v=tdSmKaJvCoA
 //
@@ -14,7 +14,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectPooler : MonoBehaviour
+public class ObjectPooler : Singleton<ObjectPooler>
 {
     // A list of Pool objects based on the Pool class
     public List<Pool> pools;
@@ -23,21 +23,22 @@ public class ObjectPooler : MonoBehaviour
     public Dictionary<string, Queue<GameObject>> poolDictionary;
 
 
-    #region This code makes this class a Singleton
+    //#region This code makes this class a Singleton
 
-    public static ObjectPooler instance;
+    //public static ObjectPooler instance;
 
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-    }
-    #endregion
+    //private void Awake()
+    //{
+    //    if (instance == null)
+    //    {
+    //        instance = this;
+    //    }
+    //}
+    //#endregion
 
 
     // Start is called before the first frame update
+
     void Start()
     {
         poolDictionary = new Dictionary<string, Queue<GameObject>>();
@@ -92,6 +93,10 @@ public class ObjectPooler : MonoBehaviour
         // Add the object back to the queue of objects (to the back of the line)
         poolDictionary[tag].Enqueue(objectToSpawn);
 
+        // If we spawned in a pooled object, call its OnSpawn method.
+        IPooledObject pooledObject = objectToSpawn.GetComponent<IPooledObject>();
+        pooledObject?.OnSpawn();
+
         // Return the object to spawn
         return objectToSpawn;
     }
@@ -103,7 +108,15 @@ public class ObjectPooler : MonoBehaviour
 
         // Add the object back to the queue of objects (to the back of the line)
         poolDictionary[tag].Enqueue(objectToReturn);
+    }
 
+    public string GetRandomTag()
+    {
+        string[] keyArr = new string[poolDictionary.Keys.Count];
+        poolDictionary.Keys.CopyTo(keyArr, 0);
+
+        int index = Random.Range(0, poolDictionary.Keys.Count);
+        return keyArr[index];
     }
 
 }

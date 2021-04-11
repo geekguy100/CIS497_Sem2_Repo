@@ -13,23 +13,31 @@ public abstract class IShapeBehaviour : MonoBehaviour
 
     protected Color color;
 
+    protected string poolTag = string.Empty;
+
     private void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
         SetColor();
     }
 
+    private void SetColor()
+    {
+        sr.color = GetColor();
+    }
+
     protected void OnMouseDown()
     {
         PerformAction();
+        ObjectPooler.Instance.ReturnObjectToPool(poolTag, gameObject);
     }
 
     protected abstract void PerformAction();
 
     protected abstract Color GetColor();
 
-    private void SetColor()
+    public void SetPoolTag(string poolTag)
     {
-        sr.color = GetColor();
+        this.poolTag = poolTag;
     }
 }

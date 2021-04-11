@@ -9,9 +9,12 @@ using UnityEngine;
 
 public class BombBehaviour : IShapeBehaviour
 {
+    private const int SCORE_MODIFIER = -2;
+
     protected override void PerformAction()
     {
-        print("Clicked on da bomb!");
+        // Play a sound, instantitate a particle effect, etc.
+        ScoreManager.Instance.Score += SCORE_MODIFIER;
     }
 
     protected override Color GetColor()
