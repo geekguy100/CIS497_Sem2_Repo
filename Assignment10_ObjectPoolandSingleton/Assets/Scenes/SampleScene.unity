@@ -849,16 +849,16 @@ MonoBehaviour:
   pools:
   - tag: Circle
     prefab: {fileID: 1464806045268679460, guid: 73655c9c73058ff4ca8abd8ef4732d3c, type: 3}
-    size: 5
+    size: 3
   - tag: Capsule
     prefab: {fileID: 6277174037674848957, guid: 17bc6ed6931b3e24689c18f23f895d6c, type: 3}
-    size: 5
+    size: 3
   - tag: Square
     prefab: {fileID: 6915003367037599857, guid: e68a90a37933bf549885f32aea61af5a, type: 3}
-    size: 5
+    size: 3
   - tag: Diamond
     prefab: {fileID: 2089512433403974229, guid: 9e776644292bef241ac3c5f39a0ff8a8, type: 3}
-    size: 5
+    size: 3
 --- !u!1 &685431084
 GameObject:
   m_ObjectHideFlags: 0

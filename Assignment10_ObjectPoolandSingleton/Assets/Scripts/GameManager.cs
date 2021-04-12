@@ -7,6 +7,7 @@
 *****************************************************************************/
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -21,17 +22,32 @@ public class GameManager : Singleton<GameManager>
         gameWon = true;
 
         UIManager.Instance.GameWin();
+
+        StartCoroutine(WaitThenReload());
     }
 
     public void GameLost()
     {
         gameOver = true;
         UIManager.Instance.GameLost();
+
+        StartCoroutine(WaitThenReload());
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            ReloadScene();
+    }
+
+    private IEnumerator WaitThenReload()
+    {
+        yield return new WaitForSeconds(3f);
+        ReloadScene();
+    }
+
+    private void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
