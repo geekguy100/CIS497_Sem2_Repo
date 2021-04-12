@@ -105,9 +105,6 @@ public class ObjectPooler : Singleton<ObjectPooler>
     {
         // Set obj as inactive
         objectToReturn.SetActive(false);
-
-        // Add the object back to the queue of objects (to the back of the line)
-        poolDictionary[tag].Enqueue(objectToReturn);
     }
 
     public string GetRandomTag()

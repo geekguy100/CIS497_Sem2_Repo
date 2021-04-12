@@ -17,7 +17,7 @@ public class OOBTrigger : MonoBehaviour
             if (collision.GetComponent<BombBehaviour>() == null)
                 --ScoreManager.Instance.Score;
 
-            ObjectPooler.Instance.ReturnObjectToPool(pooledObj.GetPoolTag(), collision.gameObject);
+            collision.gameObject.SetActive(false);
         }
     }
 }

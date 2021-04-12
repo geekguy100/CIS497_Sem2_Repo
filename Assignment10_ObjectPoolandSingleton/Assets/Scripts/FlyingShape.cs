@@ -76,6 +76,6 @@ public class FlyingShape : MonoBehaviour, IPooledObject
             return;
 
         shapeBehaviour.OnMouseClick();
-        ObjectPooler.Instance.ReturnObjectToPool(poolTag, gameObject);
+        gameObject.SetActive(false);
     }
 }
