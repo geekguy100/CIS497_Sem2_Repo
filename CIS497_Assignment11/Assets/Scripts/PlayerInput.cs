@@ -20,7 +20,7 @@ public class PlayerInput : MonoBehaviour
     {
         shapeDrawer = GetComponent<ShapeDrawer>();
         shapeType = ShapeDrawer.ShapeType.CIRCLE;
-        currentShapeText.text = "Press 1-3 to change shape.\n<i>Current Shape: " + shapeType + "</i>";
+        currentShapeText.text = "Press 1-3 to change shape.\nPress Left Mouse Button to draw.\n<i>Current Shape: " + shapeType + "</i>";
     }
 
     public void Update()
@@ -46,6 +46,6 @@ public class PlayerInput : MonoBehaviour
             shapeType = ShapeDrawer.ShapeType.CAPSULE;
         
         if (Input.anyKeyDown)
-            currentShapeText.text = "Press 1-3 to change shape.\n<i>Current Shape: " + shapeType + "</i>";
+            currentShapeText.text = "Press 1-3 to change shape.\nPress Left Mouse Button to draw.\n<i>Current Shape: " + shapeType + "</i>";
     }
 }
