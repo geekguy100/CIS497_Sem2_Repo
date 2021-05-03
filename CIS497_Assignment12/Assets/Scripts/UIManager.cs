@@ -19,6 +19,16 @@ public class UIManager : MonoBehaviour
     [Header("Popup")]
     [SerializeField] private Popup popup;
 
+    [Header("Images")]
+    [SerializeField] private GameObject heart;
+    [SerializeField] private GameObject mana;
+    [SerializeField] private GameObject strength;
+
+    [Header("Children")]
+    [SerializeField] private GameObject healthHolder;
+    [SerializeField] private GameObject manaHolder;
+    [SerializeField] private GameObject strengthHolder;
+
     public static UIManager instance;
 
     public void Awake()
@@ -42,5 +52,20 @@ public class UIManager : MonoBehaviour
         healthText.text = "Health: " + stats.currentHealth + " / " + stats.maxHealth;
         manaText.text = "Mana: " + stats.currentMana + " / " + stats.maxMana;
         strengthText.text = "Strength: " + stats.currentStrength + " / " + stats.maxStrength;
+    }
+
+    public void AddHealthImage()
+    {
+        Instantiate(heart, healthHolder.transform);
+    }
+
+    public void AddManaImage()
+    {
+        Instantiate(mana, manaHolder.transform);
+    }
+
+    public void AddStrengthImage()
+    {
+        Instantiate(strength, strengthHolder.transform);
     }
 }

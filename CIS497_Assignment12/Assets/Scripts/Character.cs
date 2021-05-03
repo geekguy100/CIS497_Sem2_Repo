@@ -45,6 +45,7 @@ public class Character : MonoBehaviour
         stats.maxHealth += value;
         UIManager.instance.UpdateStatsText(stats);
         UIManager.instance.InstantiatePopUp("Health", value);
+        UIManager.instance.AddHealthImage();
     }
 
     public void ModifyMaxMana(float value)
@@ -52,6 +53,7 @@ public class Character : MonoBehaviour
         stats.maxMana += value;
         UIManager.instance.UpdateStatsText(stats);
         UIManager.instance.InstantiatePopUp("Mana",value);
+        UIManager.instance.AddManaImage();
     }
 
     public void ModifyMaxStrength(float value)
@@ -59,5 +61,6 @@ public class Character : MonoBehaviour
         stats.maxStrength += value;
         UIManager.instance.UpdateStatsText(stats);
         UIManager.instance.InstantiatePopUp("Strength",value);
+        UIManager.instance.AddStrengthImage();
     }
 }
