@@ -7,8 +7,9 @@
 *****************************************************************************/
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
-public abstract class PowerUpContainer : PowerUpComponent
+public class PowerUpContainer : PowerUpComponent
 {
     protected List<PowerUpComponent> powerUpComponents = new List<PowerUpComponent>();
 
@@ -17,8 +18,20 @@ public abstract class PowerUpContainer : PowerUpComponent
         powerUpComponents.Add(component);
     }
 
-    public override void Remove(PowerUpComponent component)
+    public override void Remove<T>()
     {
-        powerUpComponents.Remove(component);
+        powerUpComponents.Remove(powerUpComponents.Where(t => t is T).FirstOrDefault());
     }
+
+    public override void Activate(Character character)
+    {
+        foreach (PowerUpComponent c in powerUpComponents)
+            c.Activate(character);
+    }
+
+    public override string GetName()
+    {
+        return "Power Up Container";
+    }
+
 }

@@ -15,7 +15,7 @@ public abstract class PowerUpComponent
         throw new UnsupportedOperationException();
     }
 
-    public virtual void Remove(PowerUpComponent component)
+    public virtual void Remove<T>() where T : PowerUpComponent
     {
         throw new UnsupportedOperationException();
     }

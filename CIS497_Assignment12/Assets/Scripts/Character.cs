@@ -33,29 +33,31 @@ public struct CharacterStats
 public class Character : MonoBehaviour
 {
     [SerializeField] private CharacterStats stats;
-    public Action<CharacterStats> OnStatsChanged;
 
     private void Start()
     {
         stats.Init();
-        OnStatsChanged?.Invoke(stats);
+        UIManager.instance.UpdateStatsText(stats);
     }
 
     public void ModifyMaxHealth(float value)
     {
         stats.maxHealth += value;
-        OnStatsChanged.Invoke(stats);
+        UIManager.instance.UpdateStatsText(stats);
+        UIManager.instance.InstantiatePopUp("Health", value);
     }
 
     public void ModifyMaxMana(float value)
     {
         stats.maxMana += value;
-        OnStatsChanged.Invoke(stats);
+        UIManager.instance.UpdateStatsText(stats);
+        UIManager.instance.InstantiatePopUp("Mana",value);
     }
 
     public void ModifyMaxStrength(float value)
     {
         stats.maxStrength += value;
-        OnStatsChanged.Invoke(stats);
+        UIManager.instance.UpdateStatsText(stats);
+        UIManager.instance.InstantiatePopUp("Strength",value);
     }
 }

@@ -10,29 +10,33 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
+    [Header("Text Fields")]
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI healthText;
     [SerializeField] private TextMeshProUGUI manaText;
     [SerializeField] private TextMeshProUGUI strengthText;
 
-    private Character player;
+    [Header("Popup")]
+    [SerializeField] private Popup popup;
 
-    private void Awake()
+    public static UIManager instance;
+
+    public void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
     }
 
-    private void OnEnable()
+    public void InstantiatePopUp(string valueName, float value)
     {
-        player.OnStatsChanged += UpdateStatsText;
+        Popup popupInstance = Instantiate(popup);
+        popupInstance.Display(valueName + " +" + value);
     }
 
-    private void OnDisable()
-    {
-        player.OnStatsChanged -= UpdateStatsText;
-    }
 
-    private void UpdateStatsText(CharacterStats stats)
+    public void UpdateStatsText(CharacterStats stats)
     {
         nameText.text = stats.name;
         healthText.text = "Health: " + stats.currentHealth + " / " + stats.maxHealth;

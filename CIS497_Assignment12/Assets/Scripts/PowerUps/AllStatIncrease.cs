@@ -32,4 +32,9 @@ public class AllStatIncrease : PowerUpContainer
         foreach (PowerUpComponent c in powerUpComponents)
             c.Activate(character);
     }
+
+    public override void Remove<T>()
+    {
+        base.Remove<T>();
+    }
 }
