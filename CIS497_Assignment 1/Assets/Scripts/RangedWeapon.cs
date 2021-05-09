@@ -1,5 +1,5 @@
 /*****************************************************************************
-// File Name :         Zombie.cs
+// File Name :         RangedWeapon.cs
 // Author :            Kyle Grenier
 // Creation Date :     #CREATIONDATE#
 //
@@ -7,7 +7,15 @@
 *****************************************************************************/
 using UnityEngine;
 
-public class Zombie : Character
+public abstract class RangedWeapon : Weapon
 {
+    protected int maxAmmo;
+    protected int currentAmmo;
 
+    protected void reload()
+    {
+        if (currentAmmo < maxAmmo)
+            currentAmmo = maxAmmo;
+
+    }
 }

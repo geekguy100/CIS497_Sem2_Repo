@@ -1,5 +1,5 @@
 /*****************************************************************************
-// File Name :         Zombie.cs
+// File Name :         WeaponSettings.cs
 // Author :            Kyle Grenier
 // Creation Date :     #CREATIONDATE#
 //
@@ -7,7 +7,9 @@
 *****************************************************************************/
 using UnityEngine;
 
-public class Zombie : Character
+[CreateAssetMenu(fileName = "Weapon", menuName = "Scriptable Objects/Weapon")]
+public class KyleWeapon : ScriptableObject
 {
-
+    public new string name;
+    public float damage;
 }
